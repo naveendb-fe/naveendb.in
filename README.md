@@ -28,9 +28,13 @@ Produces a static `dist/` with prerendered `/` and `/work/*` HTML shells for cra
 
 ## Deploy
 
-### GitHub Pages (configured)
+### GitHub Pages (live pipeline)
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which builds and publishes `dist/` to GitHub Pages. A `CNAME` for `naveendb.in` is included — point DNS (A/ALIAS/CNAME) at GitHub Pages when ready.
+```bash
+npm run deploy
+```
+
+Publishes `dist/` to the `gh-pages` branch. Pages is configured with custom domain `naveendb.in` — ensure DNS points at GitHub Pages.
 
 ### Vercel (optional)
 
