@@ -38,6 +38,7 @@ export const craft = [
   },
 ] as const
 
+/** Role timeline — Granicus current; earlier roles aligned with https://naveendb.in/ */
 export const experience = [
   {
     company: 'Granicus',
@@ -48,37 +49,55 @@ export const experience = [
   },
   {
     company: 'Accenture AI',
-    role: 'Frontend / Data Engineering Specialist',
+    role: 'Front-end Engineer',
     period: 'Dec 2018 — Sep 2022',
     summary:
-      'Led UI for analytics and reporting products (Next.js, Vue) after Kogentix was acquired by Accenture.',
+      'UI design and development for analytics and insights products after Kogentix was acquired by Accenture — including Next.js reporting, Vue insights platforms, and React expense tooling.',
   },
   {
     company: 'Kogentix INC.',
     role: 'UI Engineer',
     period: 'Jun 2017 — Nov 2018',
     summary:
-      'Built Angular asset-management and automated ML platform interfaces for enterprise AI customers.',
+      'Built Angular asset-management and Automated Machine Learning Platform (AMP) interfaces for enterprise AI customers.',
   },
   {
-    company: 'Flutura',
+    company: 'Flutura Decision Sciences & Analytics',
     role: 'Programmer',
     period: 'Aug 2015 — May 2017',
     summary:
-      'Early career building IoT and analytics UIs for industrial and supply-chain products.',
+      'Early career building IoT and analytics UIs for supply-chain and solar operations products on Django/jQuery stacks.',
   },
 ] as const
 
 export const education = {
-  school: 'Cambridge Institute of Technology',
+  school: 'Cambridge Institute of Technology (Bangalore)',
   degree: 'B.E. Computer Science Engineering',
   period: '2011 — 2015',
 } as const
 
+export const educationEarlier = [
+  {
+    school: 'Sri Bhagawan Mahaveer Jain College',
+    degree: 'Pre University Course',
+    period: '2009 — 2011',
+  },
+  {
+    school: 'Sacred Heart Boys High School',
+    degree: 'Secondary School Leaving Certificate',
+    period: '2006 — 2009',
+  },
+] as const
+
+/**
+ * About copy adapted from https://naveendb.in/ with current role updated to Granicus.
+ */
 export const about = {
-  lead: 'I am a senior frontend engineer focused on durable product systems — React, TypeScript, accessibility, and performance.',
-  body: 'Sketching led me into UI; a decade of shipping enterprise and civic products taught me how to turn complex domain workflows into interfaces teams can trust. Today at Granicus I help build frontends that serve public-sector scale. Earlier roles at Accenture AI, Kogentix, and Flutura grounded me in analytics, AI platforms, and startup velocity.',
+  lead: 'Hi, I’m Naveen DB — senior frontend engineer focused on UI craft, React systems, and durable product interfaces.',
+  body: 'Currently at Granicus in Bangalore, specialising in user interface design and development. Born in Sagara, Shimoga and raised in Bangalore; graduated from Cambridge Institute of Technology with a major in Computer Science Engineering. Sketching brought me into UI/UX and front-end coding from the start — over the years I’ve focused on best practices, performance, speed, and responsiveness. After graduating in 2015 I joined Flutura Decision Sciences & Analytics, then moved to AI startup Kogentix INC.; that company was later acquired by Accenture, where I continued building enterprise product UIs before joining Granicus.',
 } as const
+
+export const interests = ['Travelling', 'Music', 'Riding'] as const
 
 export const notes = [
   {
@@ -88,12 +107,13 @@ export const notes = [
   },
 ] as const
 
+/** Testimonial from https://naveendb.in/ (Sai Dileep); Zalak from LinkedIn recommendations. */
 export const testimonials = [
   {
     name: 'Sai Dileep',
-    context: 'Worked together in the same group',
+    context: 'Worked with Sai in the same group',
     quote:
-      'He was able to very quickly turn design into reality and was always thinking out of the box. His technical depth, ability to lead a team and pick latest cutting edge technologies has been instrumental for the success.',
+      'I worked with Naveen for more than a couple of years and he was, quite frankly, a great partner. He was able to very quickly turn design into reality and was always thinking out of the box. There were several times when achieving success was a challenge due to shortages in personnel, equipment, or time. Being creative, Naveen excelled during these times and did so with great spirit and enthusiasm. His technical depth, ability to lead team and pick latest cutting edge technologies has been instrumental for the success. I truly enjoyed working with him and strongly recommend Naveen for building enterprise-level products/platforms.',
   },
   {
     name: 'Zalak Upadhyay',

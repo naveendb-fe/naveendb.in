@@ -12,11 +12,11 @@ export function HeroVisual() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.9 }}
       >
-        <div className="absolute -right-8 top-6 h-56 w-56 rounded-full border border-accent/30 sm:h-72 sm:w-72" />
-        <div className="absolute right-10 top-16 h-40 w-40 rounded-full border border-line sm:h-52 sm:w-52" />
+        <div className="absolute -right-6 top-4 h-52 w-52 rounded-full border border-accent/25 sm:h-64 sm:w-64" />
+        <div className="absolute right-12 top-14 h-36 w-36 rounded-full border border-line sm:h-48 sm:w-48" />
         <motion.div
-          className="absolute bottom-10 left-0 right-8 top-20 rounded-2xl border border-line/80 bg-ink/[0.03] p-4 sm:p-5"
-          initial={{ y: 24, opacity: 0 }}
+          className="surface absolute bottom-10 left-0 right-8 top-16 rounded-xl p-4 sm:p-5"
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -29,8 +29,12 @@ export function HeroVisual() {
             <p>
               <span className="text-accent">const</span> craft = {'{'}
             </p>
-            <p className="pl-4">ui: <span className="text-ink">&apos;civic-scale&apos;</span>,</p>
-            <p className="pl-4">a11y: <span className="text-ink">true</span>,</p>
+            <p className="pl-4">
+              ui: <span className="text-ink">&apos;civic-scale&apos;</span>,
+            </p>
+            <p className="pl-4">
+              a11y: <span className="text-ink">true</span>,
+            </p>
             <p className="pl-4">
               stack: [<span className="text-ink">&apos;React&apos;</span>,{' '}
               <span className="text-ink">&apos;TypeScript&apos;</span>],
@@ -38,7 +42,7 @@ export function HeroVisual() {
             <p>{'}'}</p>
           </div>
           <motion.div
-            className="absolute -bottom-4 -right-3 h-24 w-36 rounded-xl border border-accent/40 bg-paper/90 p-3 shadow-none sm:h-28 sm:w-44"
+            className="surface absolute -bottom-4 -right-3 h-24 w-36 rounded-lg p-3 sm:h-28 sm:w-44"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.45, duration: 0.6 }}

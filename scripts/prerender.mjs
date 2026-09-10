@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Post-build prerender: copy index.html into route folders with route-specific meta
- * so static hosts and crawlers get usable HTML for / and /work/:slug.
+ * so static hosts and crawlers get usable HTML for multi-route pages.
  */
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -19,6 +19,63 @@ const site = {
   url: 'https://naveendb.in',
 }
 
+const workRoutes = [
+  {
+    path: '/work/delivery-inaccuracy',
+    title: `Delivery Inaccuracy | ${site.name}`,
+    description:
+      'Delivery Inaccuracy — Next.js reporting app for restaurant performance and order inaccuracies at Accenture AI.',
+  },
+  {
+    path: '/work/mcinsights',
+    title: `MCInsights | ${site.name}`,
+    description:
+      'MCInsights — Vue.js unified insights platform for reports, apps, and knowledge base at Accenture AI.',
+  },
+  {
+    path: '/work/zero-quartile',
+    title: `Zero Quartile | ${site.name}`,
+    description:
+      'Zero Quartile — React expense-management app with D3 visualizations at Accenture AI.',
+  },
+  {
+    path: '/work/compassionate-hr',
+    title: `Compassionate HR | ${site.name}`,
+    description:
+      'Compassionate HR — jQuery site helping HR teams navigate compassion-needed situations at Accenture AI.',
+  },
+  {
+    path: '/work/iot-asset-management',
+    title: `IoT Asset Management | ${site.name}`,
+    description:
+      'IoT Asset Management — Angular application for tracking assets and behaviours at Kogentix.',
+  },
+  {
+    path: '/work/amp',
+    title: `AMP — Automated Machine Learning Platform | ${site.name}`,
+    description:
+      'AMP — Automated Machine Learning Platform UI built with Angular.js at Kogentix.',
+  },
+  {
+    path: '/work/supply-chain-forensics',
+    title: `Supply Chain Forensics | ${site.name}`,
+    description:
+      'Supply Chain Forensics — Django/jQuery tool for managing component and finished-goods part numbers at Flutura.',
+  },
+  {
+    path: '/work/asset-health-monitor',
+    title: `Asset Health Monitor | ${site.name}`,
+    description:
+      'Asset Health Monitor — solar ecosystem monitoring UI for urgent component issues at Flutura.',
+  },
+  {
+    path: '/work/solar-operations-watch',
+    title: `Solar Operations Watch | ${site.name}`,
+    description:
+      'Solar Operations Watch — analytical IoT product UI for solar energy operations at Flutura.',
+  },
+]
+
 const routes = [
   {
     path: '/',
@@ -26,35 +83,23 @@ const routes = [
     description: site.description,
   },
   {
-    path: '/work/civic-scale-ui',
-    title: `Civic-scale product UI | ${site.name}`,
+    path: '/work',
+    title: `Work | ${site.name}`,
     description:
-      'Case study: civic-scale React product UI craft at Granicus — accessibility, hierarchy, and durable component systems.',
+      'Selected product work — Delivery Inaccuracy, MCInsights, Zero Quartile, IoT asset management, and earlier analytics UIs.',
   },
   {
-    path: '/work/shared-ui-monorepo',
-    title: `Shared UI & monorepo craft | ${site.name}`,
+    path: '/about',
+    title: `About | ${site.name}`,
     description:
-      'Case study: shared UI and monorepo frontend architecture for scalable React product development.',
+      'Senior frontend engineer focused on React, TypeScript, accessibility, and durable product systems.',
   },
   {
-    path: '/work/accessibility-quality',
-    title: `Accessibility & quality | ${site.name}`,
-    description:
-      'Case study: accessibility-first React UI and testing culture with Jest and React Testing Library.',
+    path: '/contact',
+    title: `Contact | ${site.name}`,
+    description: 'Get in touch with Naveen DB — email, LinkedIn, GitHub, and CV.',
   },
-  {
-    path: '/work/delivery-inaccuracy',
-    title: `Delivery Inaccuracy | ${site.name}`,
-    description:
-      'Case study: Next.js reporting application for restaurant delivery inaccuracy insights at Accenture AI.',
-  },
-  {
-    path: '/work/mcinsights',
-    title: `MCInsights | ${site.name}`,
-    description:
-      'Case study: Vue.js unified insights platform (MCInsights) built at Accenture AI.',
-  },
+  ...workRoutes,
 ]
 
 function injectMeta(html, { path, title, description }) {
