@@ -15,11 +15,17 @@ const site = {
   name: 'Naveen DB',
   title: 'Naveen DB | Senior Frontend Engineer',
   description:
-    'Senior Frontend Engineer at Granicus — building accessible, performant React product UIs at civic scale.',
+    'Senior Frontend Engineer at Granicus Inc. — building the Granicus Design System and accessible React product UI.',
   url: 'https://naveendb.in',
 }
 
 const workRoutes = [
+  {
+    path: '/work/granicus-design-system',
+    title: `Granicus Design System | ${site.name}`,
+    description:
+      'Granicus Design System — shared React foundations, components, and patterns for consistent, accessible product UI at Granicus Inc.',
+  },
   {
     path: '/work/delivery-inaccuracy',
     title: `Delivery Inaccuracy | ${site.name}`,
@@ -86,13 +92,13 @@ const routes = [
     path: '/work',
     title: `Work | ${site.name}`,
     description:
-      'Selected product work — Delivery Inaccuracy, MCInsights, Zero Quartile, IoT asset management, and earlier analytics UIs.',
+      'Selected work — Granicus Design System, Delivery Inaccuracy, MCInsights, and earlier product UIs.',
   },
   {
     path: '/about',
     title: `About | ${site.name}`,
     description:
-      'Senior frontend engineer focused on React, TypeScript, accessibility, and durable product systems.',
+      'Senior frontend engineer at Granicus Inc. building the Granicus Design System — React, TypeScript, accessibility.',
   },
   {
     path: '/contact',

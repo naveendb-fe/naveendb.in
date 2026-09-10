@@ -1,5 +1,6 @@
 import { Seo } from '../components/Seo'
 import { PageEnter } from '../components/PageEnter'
+import { SectionHeading } from '../components/SectionHeading'
 import { site } from '../content/site'
 
 export function ContactPage() {
@@ -11,50 +12,54 @@ export function ContactPage() {
         path="/contact"
       />
       <PageEnter>
-        <main className="pb-24 pt-12 sm:pt-16">
+        <main className="pb-24 pt-14 sm:pt-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Contact</p>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Let&apos;s talk
-            </h1>
-            <p className="mt-4 max-w-xl text-ink-muted">
-              Open to conversations with peers and hiring managers about frontend craft, React
-              systems, and product UI.
-            </p>
+            <SectionHeading
+              as="h1"
+              eyebrow="Contact"
+              title="Let's talk"
+              description="Open to conversations with peers and hiring managers about frontend craft, React systems, and product UI."
+            />
 
-            <div className="surface mt-12 max-w-2xl rounded-xl p-6 sm:p-8">
+            <div className="mt-14 max-w-2xl border border-line/80">
               <a
                 href={`mailto:${site.email}`}
-                className="text-xl font-semibold text-ink transition hover:text-accent sm:text-2xl"
+                className="group block border-b border-line/80 px-6 py-8 transition hover:bg-ink/[0.02] sm:px-8"
               >
-                {site.email}
+                <p className="eyebrow">Email</p>
+                <p className="mt-3 text-2xl font-semibold tracking-tight text-ink transition group-hover:translate-x-1 sm:text-3xl">
+                  {site.email}
+                </p>
               </a>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm text-ink-muted">
+              <div className="grid sm:grid-cols-3">
                 <a
                   href={site.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="transition hover:text-accent"
+                  className="border-b border-line/80 px-6 py-6 transition hover:bg-ink/[0.02] sm:border-r sm:px-8"
                 >
-                  LinkedIn
+                  <p className="eyebrow">Social</p>
+                  <p className="mt-2 font-medium text-ink">LinkedIn →</p>
                 </a>
                 <a
                   href={site.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="transition hover:text-accent"
+                  className="border-b border-line/80 px-6 py-6 transition hover:bg-ink/[0.02] sm:border-r sm:px-8"
                 >
-                  GitHub
+                  <p className="eyebrow">Code</p>
+                  <p className="mt-2 font-medium text-ink">GitHub →</p>
                 </a>
-                <span>{site.location}</span>
+                <div className="border-b border-line/80 px-6 py-6 sm:px-8">
+                  <p className="eyebrow">Based in</p>
+                  <p className="mt-2 font-medium text-ink">{site.location}</p>
+                </div>
               </div>
-              <a
-                href={site.cvPath}
-                download
-                className="mt-8 inline-flex items-center rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accent"
-              >
-                Download CV
-              </a>
+              <div className="px-6 py-6 sm:px-8">
+                <a href={site.cvPath} download className="btn-primary">
+                  Download CV
+                </a>
+              </div>
             </div>
           </div>
         </main>

@@ -1,3 +1,9 @@
+export type CaseStudyImage = {
+  src: string
+  alt: string
+  caption: string
+}
+
 export type CaseStudy = {
   slug: string
   title: string
@@ -10,13 +16,59 @@ export type CaseStudy = {
   approach: string
   outcome: string
   metaDescription: string
+  images?: CaseStudyImage[]
 }
 
 /**
- * Work details sourced from https://naveendb.in/ (Vue portfolio).
+ * Work details: Granicus GDS (current) + projects sourced from https://naveendb.in/ (Vue portfolio).
  * Years are approximate from role tenure on that site + current Granicus role.
  */
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: 'granicus-design-system',
+    title: 'Granicus Design System',
+    company: 'Granicus Inc.',
+    year: '2022 — Present',
+    summary:
+      'One shared design system for every Granicus product — working React code, Figma libraries, foundations, components, patterns, and guidelines so teams ship consistent, accessible UI.',
+    featured: true,
+    stack: ['React', 'TypeScript', 'Design tokens', 'Storybook', 'Figma'],
+    problem:
+      'Multiple Granicus products risked UI drift — duplicated components, inconsistent interaction patterns, and uneven accessibility — making it harder for teams to ship coherent experiences at product speed.',
+    approach:
+      'Help build and evolve the Granicus Design System (GDS): a shared ecosystem of design tokens and foundations (color, typography, spacing, elevation), reusable React components, documented patterns (forms, filters, progressive disclosure, notifications, and more), and design–dev alignment through Figma libraries, Storybook, and contribution guidelines. Emphasis on accessibility, inclusion, consistency, and predictable interaction across surfaces.',
+    outcome:
+      'A single system product teams can adopt — foundations, components, and patterns with clear docs — so interfaces stay consistent and accessible while new products can reuse proven building blocks instead of reinventing UI.',
+    metaDescription:
+      'Granicus Design System — shared React foundations, components, and patterns for consistent, accessible product UI at Granicus Inc.',
+    images: [
+      {
+        src: '/work/gds/docs-home.png',
+        alt: 'Granicus Design System documentation home — one shared system for every product',
+        caption: 'Docs home — shared system overview for design and engineering',
+      },
+      {
+        src: '/work/gds/components-overview.png',
+        alt: 'GDS components overview with token-driven Gds wrappers around Material UI',
+        caption: 'Components overview — token-driven Gds* wrappers',
+      },
+      {
+        src: '/work/gds/button.png',
+        alt: 'GDS Button component documentation with usage guidance',
+        caption: 'Button — usage, anatomy, and variants',
+      },
+      {
+        src: '/work/gds/text-field.png',
+        alt: 'GDS Text Field component documentation',
+        caption: 'Text Field — input patterns and guidance',
+      },
+      {
+        src: '/work/gds/patterns-overview.png',
+        alt: 'Design system patterns overview — notifications, save and validate, filters, progressive disclosure, bulk tagging',
+        caption: 'Patterns — recipes for composing components in common flows',
+      },
+    ],
+  },
   {
     slug: 'delivery-inaccuracy',
     title: 'Delivery Inaccuracy',
@@ -60,7 +112,7 @@ export const caseStudies: CaseStudy[] = [
     year: '2018 — 2022',
     summary:
       'A React expense-management application to identify expense drivers through expense profiles and ultimately surface cost savings.',
-    featured: true,
+    featured: false,
     stack: ['React', 'Redux', 'D3.js'],
     problem:
       'Organizations needed a way to understand expense drivers in detail and find meaningful cost-saving opportunities.',
@@ -96,7 +148,7 @@ export const caseStudies: CaseStudy[] = [
     year: '2017 — 2018',
     summary:
       'An Angular asset-management application that tracks and manages assets and various behaviours of those assets.',
-    featured: true,
+    featured: false,
     stack: ['Angular', 'TypeScript', 'Material'],
     problem:
       'Enterprise customers needed to track assets and understand behavioural signals across their IoT estate.',

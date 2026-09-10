@@ -1,5 +1,6 @@
 import { Seo } from '../components/Seo'
 import { PageEnter } from '../components/PageEnter'
+import { SectionHeading } from '../components/SectionHeading'
 import {
   about,
   education,
@@ -15,75 +16,86 @@ export function AboutPage() {
     <>
       <Seo
         title="About"
-        description="Senior frontend engineer focused on React, TypeScript, accessibility, and durable product systems."
+        description="Senior frontend engineer at Granicus Inc. building the Granicus Design System — React, TypeScript, accessibility."
         path="/about"
       />
       <PageEnter>
-        <main className="pb-24 pt-12 sm:pt-16">
+        <main className="pb-24 pt-14 sm:pt-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">About</p>
-            <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              {about.lead}
-            </h1>
+            <SectionHeading as="h1" eyebrow="About" title={about.lead} />
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">{about.body}</p>
 
-            <div className="mt-16">
-              <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">
-                Experience
-              </h2>
-              <ol className="mt-6 space-y-0 border-l border-line pl-6">
-                {experience.map((job) => (
-                  <li key={job.company} className="relative pb-10 last:pb-0">
-                    <span className="absolute -left-[1.55rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent bg-surface" />
-                    <p className="font-mono text-xs text-ink-muted">{job.period}</p>
-                    <p className="mt-1 text-lg font-semibold text-ink">
-                      {job.role} · {job.company}
-                    </p>
-                    <p className="mt-2 max-w-2xl text-ink-muted">{job.summary}</p>
+            <div className="mt-20">
+              <p className="eyebrow">Experience</p>
+              <ol className="mt-8">
+                {experience.map((job, index) => (
+                  <li
+                    key={job.company}
+                    className="grid gap-3 border-t border-line/80 py-8 sm:grid-cols-[6rem_1fr] sm:gap-10"
+                  >
+                    <span className="font-mono text-xs text-ink-muted tabular-nums">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <p className="font-mono text-[11px] tracking-wide text-ink-muted">
+                        {job.period}
+                      </p>
+                      <p className="mt-2 text-xl font-semibold tracking-tight text-ink">
+                        {job.role}
+                      </p>
+                      <p className="mt-1 text-ink-muted">{job.company}</p>
+                      <p className="mt-3 max-w-2xl leading-relaxed text-ink-muted">{job.summary}</p>
+                    </div>
                   </li>
                 ))}
+                <li className="border-t border-line/80" />
               </ol>
-              <div className="surface mt-10 space-y-4 rounded-xl px-5 py-4">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-ink-muted">
-                  Education
-                </p>
-                <p className="text-sm text-ink">
+
+              <div className="mt-6 border border-line/80 px-5 py-5 sm:px-6">
+                <p className="eyebrow">Education</p>
+                <p className="mt-4 text-sm text-ink">
                   {education.degree} · {education.school} · {education.period}
                 </p>
                 {educationEarlier.map((item) => (
-                  <p key={item.school} className="text-sm text-ink-muted">
+                  <p key={item.school} className="mt-2 text-sm text-ink-muted">
                     {item.degree} · {item.school} · {item.period}
                   </p>
                 ))}
               </div>
             </div>
 
-            <div className="mt-16 grid gap-5 md:grid-cols-2">
-              {testimonials.map((t) => (
-                <blockquote key={t.name} className="surface rounded-xl p-6">
-                  <p className="leading-relaxed text-ink-muted">&ldquo;{t.quote}&rdquo;</p>
-                  <footer className="mt-4 text-sm text-ink">
-                    <span className="font-semibold">{t.name}</span>
-                    <span className="text-ink-muted"> — {t.context}</span>
-                  </footer>
-                </blockquote>
-              ))}
+            <div className="mt-20">
+              <p className="eyebrow">Recommendations</p>
+              <div className="mt-8 grid gap-0 border-t border-l border-line/80 md:grid-cols-2">
+                {testimonials.map((t) => (
+                  <blockquote
+                    key={t.name}
+                    className="border-r border-b border-line/80 p-6 sm:p-8"
+                  >
+                    <p className="text-[1.05rem] leading-relaxed text-ink-muted">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                    <footer className="mt-6 text-sm">
+                      <span className="font-semibold text-ink">{t.name}</span>
+                      <span className="text-ink-muted"> — {t.context}</span>
+                    </footer>
+                  </blockquote>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-16">
-              <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">
-                Writing
-              </h2>
-              <ul className="mt-6 space-y-5">
+            <div className="mt-20">
+              <p className="eyebrow">Writing</p>
+              <ul className="mt-8 border-t border-line/80">
                 {notes.map((note) => (
-                  <li key={note.href}>
+                  <li key={note.href} className="border-b border-line/80">
                     <a
                       href={note.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="group block max-w-2xl"
+                      className="group block max-w-2xl py-7"
                     >
-                      <h3 className="text-lg font-semibold text-ink transition group-hover:text-accent">
+                      <h3 className="text-lg font-semibold tracking-tight text-ink transition group-hover:translate-x-1">
                         {note.title}
                       </h3>
                       <p className="mt-2 text-ink-muted">{note.blurb}</p>
@@ -94,7 +106,7 @@ export function AboutPage() {
               <p className="mt-6 font-mono text-xs text-ink-muted">
                 More on{' '}
                 <a
-                  className="text-accent hover:underline"
+                  className="underline decoration-line underline-offset-4 transition hover:decoration-ink"
                   href={site.linkedin}
                   target="_blank"
                   rel="noreferrer"

@@ -4,6 +4,7 @@ import { CraftSection } from '../components/CraftSection'
 import { WorkList } from '../components/WorkList'
 import { HomeContactCta } from '../components/HomeContactCta'
 import { PageEnter } from '../components/PageEnter'
+import { SectionHeading } from '../components/SectionHeading'
 import { getFeaturedWork } from '../content/work'
 
 export function HomePage() {
@@ -15,15 +16,14 @@ export function HomePage() {
       <PageEnter>
         <main>
           <Hero />
-          <section className="pb-8 pt-4 sm:pb-12">
+          <section className="pb-10 pt-6 sm:pb-14 sm:pt-8">
             <div className="mx-auto max-w-6xl px-5 sm:px-8">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                Selected work
-              </p>
-              <h2 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-                Selected product work
-              </h2>
-              <div className="mt-10">
+              <SectionHeading
+                eyebrow="Selected work"
+                title="Product work that shipped"
+                description="A few highlights — denser workflows, clearer systems, and interfaces people can trust."
+              />
+              <div className="mt-12">
                 <WorkList items={featured} showViewAll />
               </div>
             </div>

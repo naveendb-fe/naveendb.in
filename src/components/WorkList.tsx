@@ -5,50 +5,54 @@ import type { CaseStudy } from '../content/work'
 type WorkListProps = {
   items: CaseStudy[]
   showViewAll?: boolean
+  startIndex?: number
 }
 
-export function WorkList({ items, showViewAll = false }: WorkListProps) {
+export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkListProps) {
   const reduce = useReducedMotion()
 
   return (
     <div>
-      <ul className="divide-y divide-line/70 border-y border-line/70">
-        {items.map((item, index) => (
-          <motion.li
-            key={item.slug}
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-8% 0px' }}
-            transition={{ delay: index * 0.06, duration: 0.4 }}
-          >
-            <Link
-              to={`/work/${item.slug}`}
-              className="group grid gap-3 py-7 transition sm:grid-cols-[1fr_auto] sm:items-end sm:py-8"
+      <ul className="border-t border-line/80">
+        {items.map((item, index) => {
+          const num = String(startIndex + index).padStart(2, '0')
+          return (
+            <motion.li
+              key={item.slug}
+              initial={reduce ? false : { opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-6% 0px' }}
+              transition={{ delay: index * 0.05, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="border-b border-line/80"
             >
-              <div>
-                <p className="font-mono text-xs text-ink-muted">
-                  {item.company} · {item.year}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink transition group-hover:text-accent sm:text-2xl">
-                  {item.title}
-                </h3>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-base">
-                  {item.summary}
-                </p>
-              </div>
-              <span className="font-mono text-sm text-accent opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100">
-                Open →
-              </span>
-            </Link>
-          </motion.li>
-        ))}
+              <Link
+                to={`/work/${item.slug}`}
+                className="group relative grid gap-4 py-8 transition sm:grid-cols-[3.5rem_1fr_auto] sm:items-baseline sm:gap-6 sm:py-9"
+              >
+                <span className="absolute inset-y-0 left-0 w-0 bg-ink/[0.03] transition-all duration-300 group-hover:w-full" />
+                <span className="relative font-mono text-xs text-ink-muted tabular-nums">{num}</span>
+                <div className="relative min-w-0">
+                  <p className="font-mono text-[11px] tracking-wide text-ink-muted">
+                    {item.company} · {item.year}
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold tracking-[-0.02em] text-ink transition duration-300 group-hover:translate-x-1 sm:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-[0.95rem]">
+                    {item.summary}
+                  </p>
+                </div>
+                <span className="relative hidden font-mono text-sm text-ink-muted transition duration-300 group-hover:translate-x-1 group-hover:text-ink sm:inline">
+                  →
+                </span>
+              </Link>
+            </motion.li>
+          )
+        })}
       </ul>
       {showViewAll ? (
-        <div className="mt-8">
-          <Link
-            to="/work"
-            className="inline-flex items-center rounded-md border border-line bg-surface px-4 py-2 text-sm font-medium text-ink transition hover:border-accent hover:text-accent"
-          >
+        <div className="mt-10">
+          <Link to="/work" className="btn-ghost">
             View all work
           </Link>
         </div>

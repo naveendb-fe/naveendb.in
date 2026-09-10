@@ -2,7 +2,7 @@ export const site = {
   name: 'Naveen DB',
   title: 'Naveen DB | Senior Frontend Engineer',
   description:
-    'Senior Frontend Engineer at Granicus — building accessible, performant React product UIs at civic scale.',
+    'Senior Frontend Engineer at Granicus Inc. — building the Granicus Design System and accessible React product UI.',
   url: 'https://naveendb.in',
   email: 'naveendb92@gmail.com',
   location: 'Bangalore, India',
@@ -15,37 +15,37 @@ export const hero = {
   brand: 'Naveen DB',
   headline: 'Senior Frontend Engineer',
   supporting:
-    'Building accessible, performant React product interfaces for civic-scale platforms at Granicus.',
-  stack: ['React', 'TypeScript', 'Vite'] as const,
+    'At Granicus Inc. since Sep 2022 — building the Granicus Design System so product teams ship consistent, accessible React interfaces.',
+  stack: ['React', 'TypeScript', 'Design systems'] as const,
 } as const
 
 export const craft = [
   {
-    title: 'Product UI',
-    body: 'Complex React surfaces for workflows that governments and citizens use every day — clarity under density.',
+    title: 'Design systems',
+    body: 'Shared foundations, components, and patterns — tokens, docs, and React libraries that keep multi-product UI coherent.',
   },
   {
     title: 'Accessibility',
     body: 'WCAG-minded components, keyboard paths, and inclusive patterns treated as product requirements, not polish.',
   },
   {
-    title: 'Performance',
-    body: 'Measuring what matters — load, interaction, and render cost — so large apps stay fast for real users.',
+    title: 'Product UI',
+    body: 'Complex React surfaces for civic and enterprise workflows — clarity under density, predictable interaction.',
   },
   {
-    title: 'Systems',
-    body: 'Shared UI and monorepo craft that keep teams shipping consistently across packages and products.',
+    title: 'Performance',
+    body: 'Measuring what matters — load, interaction, and render cost — so large apps stay fast for real users.',
   },
 ] as const
 
 /** Role timeline — Granicus current; earlier roles aligned with https://naveendb.in/ */
 export const experience = [
   {
-    company: 'Granicus',
+    company: 'Granicus Inc.',
     role: 'Senior Frontend Engineer',
     period: 'Sep 2022 — Present',
     summary:
-      'Shipping React/TypeScript product UI for civic engagement platforms used by government agencies worldwide.',
+      'Building the Granicus Design System (GDS) — a shared React system of foundations, components, patterns, and guidelines so product teams ship consistent, accessible UI across Granicus products.',
   },
   {
     company: 'Accenture AI',
@@ -94,7 +94,7 @@ export const educationEarlier = [
  */
 export const about = {
   lead: 'Hi, I’m Naveen DB — senior frontend engineer focused on UI craft, React systems, and durable product interfaces.',
-  body: 'Currently at Granicus in Bangalore, specialising in user interface design and development. Born in Sagara, Shimoga and raised in Bangalore; graduated from Cambridge Institute of Technology with a major in Computer Science Engineering. Sketching brought me into UI/UX and front-end coding from the start — over the years I’ve focused on best practices, performance, speed, and responsiveness. After graduating in 2015 I joined Flutura Decision Sciences & Analytics, then moved to AI startup Kogentix INC.; that company was later acquired by Accenture, where I continued building enterprise product UIs before joining Granicus.',
+  body: 'Since September 2022 I’ve been a Senior Frontend Engineer at Granicus Inc. in Bangalore, where I work on the Granicus Design System — one shared system of working code, Figma libraries, and guidelines so teams ship interfaces that stay consistent, accessible, and ready for the next product. Born in Sagara, Shimoga and raised in Bangalore; graduated from Cambridge Institute of Technology with a major in Computer Science Engineering. Sketching brought me into UI/UX and front-end coding from the start — over the years I’ve focused on best practices, performance, speed, and responsiveness. After graduating in 2015 I joined Flutura Decision Sciences & Analytics, then moved to AI startup Kogentix INC.; that company was later acquired by Accenture, where I continued building enterprise product UIs before joining Granicus.',
 } as const
 
 export const interests = ['Travelling', 'Music', 'Riding'] as const
