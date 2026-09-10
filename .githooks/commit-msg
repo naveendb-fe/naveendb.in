@@ -1,0 +1,10 @@
+#!/bin/sh
+# Strip Cursor agent co-author / attribution trailers from commit messages.
+msg_file="$1"
+tmp="$(mktemp)"
+# Remove Co-authored-by Cursor lines and Made-with / Made with Cursor trailers
+sed -E \
+  -e '/^[[:space:]]*Co-authored-by:[[:space:]]*Cursor[[:space:]]*<cursoragent@cursor\.com>[[:space:]]*$/Id' \
+  -e '/^[[:space:]]*Made-with:[[:space:]]*Cursor[[:space:]]*$/Id' \
+  -e '/^[[:space:]]*Made with Cursor[[:space:]]*$/Id' \
+  "$msg_file" > "$tmp" && mv "$tmp" "$msg_file"
