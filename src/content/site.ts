@@ -8,6 +8,7 @@ export const site = {
   location: 'Bangalore, India',
   github: 'https://github.com/naveendb-fe',
   linkedin: 'https://www.linkedin.com/in/naveendb92',
+  medium: 'https://medium.com/@naveendb92',
   cvPath: '/Naveen-DB-CV.pdf',
   ogImage: '/og.jpg',
 } as const
@@ -78,9 +79,20 @@ export const interests = ['Travelling', 'Music', 'Riding'] as const
 
 export const notes = [
   {
-    title: 'Writing clean, predictable test cases with Jest + React Testing Library',
-    href: 'https://www.linkedin.com/posts/naveendb92_writing-clean-predictable-test-cases-in-activity-7325065381197291520-W8fB',
-    blurb: 'Naming, Redux-friendly helpers, RTL patterns that scale, and MUI testing tips.',
+    title: 'Writing clean, predictable test cases in React using Jest and RTL',
+    href: 'https://medium.com/@naveendb92/writing-clean-predictable-test-cases-in-react-using-jest-and-rtl-0fcabea4e47d',
+    blurb:
+      'Naming, Redux-friendly helpers, RTL patterns that scale, and practical tips for Material UI.',
+    date: 'May 2025',
+    topic: 'React testing',
+  },
+  {
+    title: 'How to install a free SSL certificate on a GoDaddy-hosted website',
+    href: 'https://medium.com/@naveendb92/how-to-install-a-free-ssl-certificate-on-your-godaddy-hosted-website-1b47e7454c71',
+    blurb:
+      'A practical walkthrough for securing a personal site — cert setup, hosting quirks, and trust signals.',
+    date: 'May 2024',
+    topic: 'Web ops',
   },
 ] as const
 

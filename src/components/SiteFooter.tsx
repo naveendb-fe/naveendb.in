@@ -9,7 +9,7 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-ink/10">
+    <footer className="border-t border-white/[0.06]">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -18,16 +18,24 @@ export function SiteFooter() {
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted" aria-label="Footer">
             {links.map((link) => (
-              <Link key={link.to} to={link.to} className="transition hover:text-ink">
+              <Link key={link.to} to={link.to} className="transition hover:text-accent">
                 {link.label}
               </Link>
             ))}
-            <a href={site.cvPath} download className="transition hover:text-ink">
+            <a href={site.cvPath} download className="transition hover:text-accent">
               CV
+            </a>
+            <a
+              href={site.medium}
+              target="_blank"
+              rel="noreferrer"
+              className="transition hover:text-accent"
+            >
+              Medium
             </a>
           </nav>
         </div>
-        <div className="flex flex-col gap-2 border-t border-ink/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-white/[0.06] pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ink-muted">
             © {new Date().getFullYear()} {site.name}
           </p>

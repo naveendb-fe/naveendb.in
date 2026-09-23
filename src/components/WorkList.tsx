@@ -13,9 +13,10 @@ export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkLis
 
   return (
     <div>
-      <ul className="border-t border-ink/15">
+      <ul className="overflow-hidden rounded-xl border border-white/[0.07] bg-surface/40 backdrop-blur-sm">
         {items.map((item, index) => {
           const num = String(startIndex + index).padStart(2, '0')
+          const isLast = index === items.length - 1
           return (
             <motion.li
               key={item.slug}
@@ -23,13 +24,14 @@ export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkLis
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-8% 0px' }}
               transition={{ delay: index * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="border-b border-ink/15"
+              className={isLast ? '' : 'border-b border-white/[0.06]'}
             >
               <Link
                 to={`/work/${item.slug}`}
-                className="group relative grid gap-3 py-9 transition sm:grid-cols-[4.5rem_minmax(0,1fr)_7rem] sm:items-start sm:gap-8 sm:py-11"
+                className="group relative grid gap-3 px-4 py-9 transition sm:grid-cols-[4.5rem_minmax(0,1fr)_7rem] sm:items-start sm:gap-8 sm:px-6 sm:py-11"
               >
-                <span className="absolute inset-y-0 left-0 w-0 bg-ink/[0.035] transition-[width] duration-300 ease-out group-hover:w-full" />
+                <span className="absolute inset-y-0 left-0 w-0 bg-accent/[0.06] transition-[width] duration-300 ease-out group-hover:w-full" />
+                <span className="absolute inset-y-3 left-0 w-0.5 scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100" />
 
                 <span className="relative font-mono text-sm text-ink-muted tabular-nums sm:pt-1">
                   {num}
@@ -55,7 +57,7 @@ export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkLis
                     {item.stack.slice(0, 4).map((tech) => (
                       <li
                         key={tech}
-                        className="border border-line/90 px-2 py-0.5 font-mono text-[10px] tracking-wide text-ink-muted transition group-hover:border-ink/35 group-hover:text-ink"
+                        className="rounded border border-white/[0.08] px-2 py-0.5 font-mono text-[10px] tracking-wide text-ink-muted transition group-hover:border-accent/30 group-hover:text-accent"
                       >
                         {tech}
                       </li>
@@ -65,7 +67,7 @@ export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkLis
 
                 <div className="relative hidden flex-col items-end gap-3 sm:flex sm:pt-1">
                   <span className="font-mono text-xs text-ink-muted tabular-nums">{item.year}</span>
-                  <span className="font-mono text-sm text-ink-muted transition duration-300 group-hover:translate-x-1 group-hover:text-ink">
+                  <span className="font-mono text-sm text-ink-muted transition duration-300 group-hover:translate-x-1 group-hover:text-accent">
                     Open →
                   </span>
                 </div>

@@ -37,13 +37,13 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
   const lightbox = active !== null ? images[active] : null
 
   return (
-    <section className="border-b border-line/80 py-10">
+    <section className="border-b border-white/[0.07] py-10">
       <div className="flex items-end justify-between gap-4">
         <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">Screens</p>
         {images.length > 1 ? (
           <button
             type="button"
-            className="font-mono text-[11px] tracking-wide text-ink-muted underline-offset-4 transition hover:text-ink hover:underline"
+            className="font-mono text-[11px] tracking-wide text-ink-muted underline-offset-4 transition hover:text-accent hover:underline"
             onClick={() => setActive(0)}
           >
             View all ({images.length})
@@ -51,10 +51,10 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
         ) : null}
       </div>
 
-      <figure className="mt-6 overflow-hidden border border-line/80 bg-surface">
+      <figure className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-surface shadow-[var(--shadow-elevated)]">
         <button
           type="button"
-          className="block w-full text-left transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          className="block w-full text-left transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           onClick={() => setActive(0)}
           aria-label={`Enlarge: ${hero.caption}`}
         >
@@ -66,7 +66,7 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
             decoding="async"
           />
         </button>
-        <figcaption className="border-t border-line/80 px-4 py-3 font-mono text-[11px] text-ink-muted sm:px-5">
+        <figcaption className="border-t border-white/[0.06] px-4 py-3 font-mono text-[11px] text-ink-muted sm:px-5">
           {hero.caption}
         </figcaption>
       </figure>
@@ -74,10 +74,13 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
       {thumbs.length > 0 ? (
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {thumbs.map((image, index) => (
-            <figure key={image.src} className="overflow-hidden border border-line/80 bg-surface">
+            <figure
+              key={image.src}
+              className="overflow-hidden rounded-xl border border-white/[0.08] bg-surface shadow-[var(--shadow-elevated)]"
+            >
               <button
                 type="button"
-                className="block w-full text-left transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                className="block w-full text-left transition hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 onClick={() => setActive(index + 1)}
                 aria-label={`Enlarge: ${image.caption}`}
               >
@@ -89,7 +92,7 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
                   decoding="async"
                 />
               </button>
-              <figcaption className="border-t border-line/80 px-3 py-2.5 font-mono text-[11px] text-ink-muted">
+              <figcaption className="border-t border-white/[0.06] px-3 py-2.5 font-mono text-[11px] text-ink-muted">
                 {image.caption}
               </figcaption>
             </figure>
@@ -101,7 +104,7 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
         <div className="mt-4">
           <button
             type="button"
-            className="inline-flex w-full items-center justify-center border border-line/80 px-4 py-3 font-mono text-[11px] tracking-[0.14em] text-ink-muted uppercase transition hover:border-ink/40 hover:text-ink"
+            className="inline-flex w-full items-center justify-center rounded-lg border border-white/[0.08] bg-surface/50 px-4 py-3 font-mono text-[11px] tracking-[0.14em] text-ink-muted uppercase transition hover:border-accent/35 hover:text-accent"
             onClick={() => setActive(0)}
           >
             View all {images.length} screens
@@ -111,23 +114,23 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
 
       {lightbox ? (
         <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/80 p-4 sm:p-8"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-paper/90 p-4 backdrop-blur-md sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
           onClick={() => setActive(null)}
         >
           <div
-            className="relative max-h-full w-full max-w-5xl overflow-auto bg-paper"
+            className="relative max-h-full w-full max-w-5xl overflow-auto rounded-xl border border-white/[0.1] bg-surface shadow-[var(--shadow-elevated)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-4 border-b border-line/80 px-4 py-3">
+            <div className="flex items-center justify-between gap-4 border-b border-white/[0.08] px-4 py-3">
               <p id={titleId} className="min-w-0 truncate font-mono text-[11px] text-ink-muted">
                 {lightbox.caption}
               </p>
               <button
                 type="button"
-                className="shrink-0 font-mono text-sm text-ink-muted transition hover:text-ink"
+                className="shrink-0 font-mono text-sm text-ink-muted transition hover:text-accent"
                 onClick={() => setActive(null)}
               >
                 Close
@@ -139,10 +142,10 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
               className="block h-auto max-h-[80vh] w-full object-contain"
             />
             {images.length > 1 ? (
-              <div className="flex justify-between border-t border-line/80 px-4 py-3 font-mono text-sm text-ink-muted">
+              <div className="flex justify-between border-t border-white/[0.08] px-4 py-3 font-mono text-sm text-ink-muted">
                 <button
                   type="button"
-                  className="hover:text-ink"
+                  className="hover:text-accent"
                   onClick={() =>
                     setActive((i) => (i === null ? 0 : (i - 1 + images.length) % images.length))
                   }
@@ -154,7 +157,7 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
                 </span>
                 <button
                   type="button"
-                  className="hover:text-ink"
+                  className="hover:text-accent"
                   onClick={() => setActive((i) => (i === null ? 0 : (i + 1) % images.length))}
                 >
                   Next →

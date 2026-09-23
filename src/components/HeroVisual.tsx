@@ -11,7 +11,7 @@ import {
 const states = ['Default', 'Hover', 'Focus', 'Loading'] as const
 
 const tokens = [
-  { id: 'color', label: 'color.action', value: '#0A0A0B' },
+  { id: 'color', label: 'color.action', value: '#F2F3F5' },
   { id: 'space', label: 'space.3', value: '12px' },
   { id: 'type', label: 'type.label', value: '14 / 500' },
   { id: 'radius', label: 'radius.sm', value: '4px' },
@@ -55,18 +55,18 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
       className="relative mx-auto h-full min-h-[360px] w-full max-w-lg [perspective:1400px] sm:min-h-[480px] lg:max-w-none"
       aria-hidden="true"
     >
-      {/* Atmosphere */}
       <motion.div
-        className="absolute -right-8 top-0 h-72 w-72 rounded-full border border-line/60 sm:-right-6 sm:h-96 sm:w-96"
+        className="absolute -right-8 top-0 h-72 w-72 rounded-full border border-line/80 sm:-right-6 sm:h-96 sm:w-96"
         animate={reduce ? undefined : { rotate: 360 }}
         transition={{ duration: 120, repeat: Infinity, ease: 'linear' }}
       />
-      <div className="absolute right-10 top-20 h-44 w-44 rounded-full border border-dashed border-line/70 sm:h-56 sm:w-56" />
+      <div className="absolute right-10 top-20 h-44 w-44 rounded-full border border-dashed border-accent/25 sm:h-56 sm:w-56" />
       <motion.div
-        className="absolute bottom-16 left-2 h-24 w-24 rounded-full border border-line/50"
+        className="absolute bottom-16 left-2 h-24 w-24 rounded-full border border-line/70"
         animate={reduce ? undefined : { scale: [1, 1.06, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       />
+      <div className="pointer-events-none absolute right-4 top-12 h-40 w-40 rounded-full bg-accent/10 blur-3xl" />
 
       <motion.div
         className="absolute inset-0"
@@ -83,76 +83,97 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
               }
         }
       >
-        {/* Main product plane — real GDS proof */}
+        {/* Abstract system preview — CSS only, no product screenshot */}
         <motion.div
-          className="absolute inset-x-0 top-6 bottom-14 overflow-hidden rounded-2xl border border-line/80 bg-surface shadow-[0_28px_80px_-40px_rgba(10,10,11,0.55)] sm:inset-x-1 sm:top-8 sm:bottom-16"
+          className="absolute inset-x-0 top-6 bottom-14 overflow-hidden rounded-2xl border border-white/[0.08] bg-surface shadow-[0_28px_80px_-36px_rgba(0,0,0,0.85),0_0_0_1px_rgba(158,197,200,0.06)] sm:inset-x-1 sm:top-8 sm:bottom-16"
           initial={reduce ? false : { y: 36, opacity: 0, scale: 0.96 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
           transition={{ delay: 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={reduce ? undefined : { x: frameX, y: frameY }}
         >
-          <div className="flex items-center justify-between border-b border-line/70 px-4 py-2.5">
+          <div className="flex items-center justify-between border-b border-white/[0.06] bg-paper/40 px-4 py-2.5">
             <div className="flex gap-1.5">
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
-              <span className="h-2 w-2 rounded-full bg-ink/35" />
+              <span className="h-2 w-2 rounded-full bg-accent/60" />
             </div>
             <span className="font-mono text-[10px] tracking-[0.18em] text-ink-muted uppercase">
-              gds · docs
+              system · preview
             </span>
           </div>
 
-          <div className="relative h-[calc(100%-2.25rem)] overflow-hidden bg-ink/[0.03]">
-            <img
-              src="/work/gds/docs-home.png"
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover object-top"
-              loading="eager"
-              decoding="async"
-            />
-            {/* Soft vignette so overlays read cleanly */}
-            <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-paper/20" />
-            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-paper/70 to-transparent" />
+          <div className="relative h-[calc(100%-2.25rem)] overflow-hidden bg-gradient-to-b from-paper/80 via-surface to-paper px-4 py-5 sm:px-5 sm:py-6">
+            <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:24px_24px]" />
 
-            {/* Scan line */}
+            <div className="relative">
+              <div className="flex flex-wrap items-start gap-2">
+                <h3 className="max-w-[14rem] text-[1.15rem] font-semibold leading-tight tracking-[-0.03em] text-ink sm:max-w-[16rem] sm:text-[1.35rem]">
+                  One shared system for every product
+                </h3>
+                <span className="mt-0.5 rounded border border-accent/30 bg-accent-soft px-1.5 py-0.5 font-mono text-[9px] tracking-wide text-accent">
+                  contrast AA · pass
+                </span>
+              </div>
+              <p className="mt-3 max-w-[15rem] text-[11px] leading-relaxed text-ink-muted sm:max-w-[17rem] sm:text-xs">
+                Working code, libraries, and guidelines so teams ship interfaces that stay
+                consistent and accessible.
+              </p>
+
+              <div className="mt-5 flex items-center justify-between gap-3 rounded-md border border-white/[0.07] bg-paper/50 px-3 py-2.5">
+                <p className="text-[11px] font-medium text-ink sm:text-xs">
+                  Accessibility checklist before shipping
+                </p>
+                <span className="font-mono text-[10px] text-accent">→</span>
+              </div>
+
+              <div className="mt-5">
+                <p className="font-mono text-[9px] tracking-[0.16em] text-ink-muted uppercase">
+                  Start with foundations
+                </p>
+                <div className="mt-2.5 grid grid-cols-3 gap-2">
+                  {['Design', 'Develop', 'Migrate'].map((label) => (
+                    <div
+                      key={label}
+                      className="rounded-md border border-white/[0.06] bg-paper/40 px-2 py-3 text-center"
+                    >
+                      <div className="mx-auto h-6 w-6 rounded border border-line/80 bg-surface/80" />
+                      <p className="mt-2 font-mono text-[9px] tracking-wide text-ink-muted">
+                        {label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {!reduce ? (
               <motion.div
-                className="absolute inset-x-0 h-px bg-ink/25"
+                className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"
                 initial={{ top: '12%' }}
                 animate={{ top: ['12%', '78%', '12%'] }}
                 transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
               />
             ) : null}
 
-            {/* Annotation callouts on the screenshot */}
             <motion.div
-              className="absolute left-3 top-[38%] hidden max-w-[9.5rem] rounded-md border border-line/80 bg-paper/95 px-2.5 py-2 shadow-sm backdrop-blur-sm sm:left-4 sm:block"
+              className="absolute left-3 top-[42%] hidden max-w-[9.5rem] rounded-md border border-white/[0.1] bg-surface/95 px-2.5 py-2 shadow-[0_12px_32px_-16px_rgba(0,0,0,0.8)] backdrop-blur-sm sm:left-4 sm:block"
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.45 }}
               style={reduce ? undefined : { x: chipX }}
             >
-              <p className="font-mono text-[9px] tracking-wider text-ink-muted uppercase">Inspect</p>
+              <p className="font-mono text-[9px] tracking-wider text-accent uppercase">Inspect</p>
               <p className="mt-1 text-[11px] font-medium leading-snug text-ink">
                 Shared foundations for every product surface
               </p>
-              <span className="absolute -right-3 top-1/2 h-px w-3 bg-ink/40" />
-            </motion.div>
-
-            <motion.div
-              className="absolute right-3 top-[22%] rounded-md border border-line/80 bg-paper/95 px-2 py-1.5 font-mono text-[10px] text-ink shadow-sm backdrop-blur-sm sm:right-4"
-              initial={reduce ? false : { opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.4 }}
-            >
-              contrast AA · pass
+              <span className="absolute -right-3 top-1/2 h-px w-3 bg-accent/50" />
             </motion.div>
           </div>
         </motion.div>
 
         {/* Living component card — state machine */}
         <motion.div
-          className="surface absolute -left-1 top-2 z-10 w-[58%] rounded-xl p-3.5 sm:left-0 sm:top-3 sm:w-56 sm:p-4"
+          className="glass absolute -left-1 top-2 z-10 w-[58%] rounded-xl p-3.5 sm:left-0 sm:top-3 sm:w-56 sm:p-4"
           initial={reduce ? false : { opacity: 0, y: 18, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -165,7 +186,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
             <AnimatePresence mode="wait">
               <motion.span
                 key={activeState}
-                className="rounded border border-line px-1.5 py-0.5 font-mono text-[9px] text-ink"
+                className="rounded border border-line px-1.5 py-0.5 font-mono text-[9px] text-accent"
                 initial={reduce ? false : { opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduce ? undefined : { opacity: 0, y: -4 }}
@@ -187,9 +208,11 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
                 className={[
                   'inline-flex min-w-[7.5rem] items-center justify-center rounded px-4 py-2 text-sm font-medium tracking-tight',
                   activeState === 'Default' ? 'bg-ink text-paper' : '',
-                  activeState === 'Hover' ? 'bg-ink/85 text-paper shadow-[0_10px_24px_-14px_rgba(10,10,11,0.7)]' : '',
+                  activeState === 'Hover'
+                    ? 'bg-ink/90 text-paper shadow-[0_10px_28px_-12px_rgba(158,197,200,0.55)]'
+                    : '',
                   activeState === 'Focus'
-                    ? 'bg-ink text-paper outline outline-2 outline-offset-2 outline-ink/50'
+                    ? 'bg-ink text-paper outline outline-2 outline-offset-2 outline-accent/60'
                     : '',
                   activeState === 'Loading' ? 'bg-ink/70 text-paper/90' : '',
                 ].join(' ')}
@@ -212,7 +235,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
                 key={state}
                 className={[
                   'h-1 flex-1 rounded-full transition-colors duration-300',
-                  i === stateIndex ? 'bg-ink' : 'bg-line',
+                  i === stateIndex ? 'bg-accent' : 'bg-line',
                 ].join(' ')}
               />
             ))}
@@ -229,20 +252,19 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
           {tokens.map((token, i) => (
             <motion.li
               key={token.id}
-              className="rounded-md border border-line/80 bg-paper/95 px-2 py-1.5 shadow-sm backdrop-blur-sm"
+              className="rounded-md border border-white/[0.08] bg-surface/90 px-2 py-1.5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.7)] backdrop-blur-sm"
               initial={reduce ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.62 + i * 0.06, duration: 0.35 }}
             >
               <p className="font-mono text-[9px] tracking-wide text-ink-muted">{token.label}</p>
-              <p className="font-mono text-[10px] font-medium text-ink">{token.value}</p>
+              <p className="font-mono text-[10px] font-medium text-accent">{token.value}</p>
             </motion.li>
           ))}
         </motion.ul>
 
-        {/* Accent rule */}
         <motion.div
-          className="absolute left-0 top-0 h-px w-24 bg-ink/45 sm:w-32"
+          className="absolute left-0 top-0 h-px w-24 bg-gradient-to-r from-accent/70 to-transparent sm:w-32"
           initial={reduce ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.4, duration: 0.65 }}

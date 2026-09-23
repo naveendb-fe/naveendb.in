@@ -31,13 +31,13 @@ export function WorkPage() {
           <article className="mx-auto max-w-3xl px-5 sm:px-8">
             <Link
               to="/work"
-              className="inline-flex font-mono text-sm text-ink-muted transition hover:text-ink"
+              className="inline-flex font-mono text-sm text-ink-muted transition hover:text-accent"
             >
               ← Back to work
             </Link>
 
             <motion.header
-              className="mt-10 border-b border-line/80 pb-10"
+              className="mt-10 border-b border-white/[0.08] pb-10"
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
@@ -50,7 +50,7 @@ export function WorkPage() {
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-ink-muted">{study.summary}</p>
               {study.role ? (
-                <p className="mt-6 max-w-2xl border-l border-ink/25 pl-4 text-sm leading-relaxed text-ink">
+                <p className="mt-6 max-w-2xl border-l-2 border-accent/40 pl-4 text-sm leading-relaxed text-ink">
                   <span className="font-mono text-[11px] tracking-wide text-ink-muted uppercase">
                     Role
                   </span>
@@ -61,7 +61,7 @@ export function WorkPage() {
                 {study.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="border border-line/80 px-3 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
+                    className="rounded border border-white/[0.08] bg-surface/50 px-3 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
                   >
                     {tech}
                   </li>
@@ -77,7 +77,7 @@ export function WorkPage() {
 
             <div>
               {sections.map(([label, body], index) => (
-                <section key={label} className="border-b border-line/80 py-10">
+                <section key={label} className="border-b border-white/[0.07] py-10">
                   <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">
                     {String(index + 1).padStart(2, '0')} · {label}
                   </p>
@@ -88,7 +88,7 @@ export function WorkPage() {
               ))}
 
               {study.decisions?.length ? (
-                <section className="border-b border-line/80 py-10">
+                <section className="border-b border-white/[0.07] py-10">
                   <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">
                     Decisions
                   </p>
@@ -96,7 +96,7 @@ export function WorkPage() {
                     {study.decisions.map((item) => (
                       <li
                         key={item}
-                        className="border-l border-ink/20 pl-4 text-[1.05rem] leading-[1.75] text-ink-muted"
+                        className="border-l border-accent/30 pl-4 text-[1.05rem] leading-[1.75] text-ink-muted"
                       >
                         {item}
                       </li>
@@ -107,13 +107,13 @@ export function WorkPage() {
             </div>
 
             <nav
-              className="mt-14 grid gap-6 border-t border-line/80 pt-10 sm:grid-cols-2"
+              className="mt-14 grid gap-6 border-t border-white/[0.08] pt-10 sm:grid-cols-2"
               aria-label="Adjacent case studies"
             >
               {prev ? (
                 <Link to={`/work/${prev.slug}`} className="group block">
                   <p className="font-mono text-[11px] tracking-wide text-ink-muted">Previous</p>
-                  <p className="mt-2 text-lg font-semibold tracking-tight text-ink transition group-hover:translate-x-0.5">
+                  <p className="mt-2 text-lg font-semibold tracking-tight text-ink transition group-hover:translate-x-0.5 group-hover:text-accent">
                     ← {prev.title}
                   </p>
                 </Link>
@@ -123,7 +123,7 @@ export function WorkPage() {
               {next ? (
                 <Link to={`/work/${next.slug}`} className="group block sm:text-right">
                   <p className="font-mono text-[11px] tracking-wide text-ink-muted">Next</p>
-                  <p className="mt-2 text-lg font-semibold tracking-tight text-ink transition group-hover:-translate-x-0.5 sm:group-hover:translate-x-0">
+                  <p className="mt-2 text-lg font-semibold tracking-tight text-ink transition group-hover:text-accent group-hover:-translate-x-0.5 sm:group-hover:translate-x-0">
                     {next.title} →
                   </p>
                 </Link>

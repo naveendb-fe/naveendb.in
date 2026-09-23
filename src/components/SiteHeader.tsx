@@ -31,7 +31,7 @@ export function SiteHeader() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-paper/75 backdrop-blur-xl">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:bg-ink focus:px-3 focus:py-2 focus:text-sm focus:text-paper"
@@ -45,7 +45,7 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
         >
           {site.name}
-          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-ink transition-all duration-300 group-hover:w-full" />
+          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -66,7 +66,7 @@ export function SiteHeader() {
                   {isActive ? (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute inset-x-3 bottom-0.5 h-px bg-ink"
+                      className="absolute inset-x-3 bottom-0.5 h-px bg-accent"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   ) : null}
@@ -85,7 +85,7 @@ export function SiteHeader() {
           </a>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center border border-line text-ink"
+            className="inline-flex h-9 w-9 items-center justify-center rounded border border-white/[0.1] bg-surface/60 text-ink"
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -103,7 +103,7 @@ export function SiteHeader() {
         {open ? (
           <motion.nav
             id={panelId}
-            className="border-t border-ink/10 bg-paper md:hidden"
+            className="border-t border-white/[0.06] bg-paper/95 backdrop-blur-xl md:hidden"
             aria-label="Mobile"
             initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -118,7 +118,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       [
-                        'block border-b border-line/70 py-4 text-base',
+                        'block border-b border-white/[0.06] py-4 text-base',
                         isActive ? 'text-ink' : 'text-ink-muted',
                       ].join(' ')
                     }

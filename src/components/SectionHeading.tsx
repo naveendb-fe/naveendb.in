@@ -21,7 +21,7 @@ export function SectionHeading({
 
   if (align === 'split') {
     return (
-      <div className="grid gap-6 border-b border-ink/15 pb-10 lg:grid-cols-[1fr_1.1fr] lg:items-end lg:gap-16">
+      <div className="grid gap-6 border-b border-white/[0.08] pb-10 lg:grid-cols-[1fr_1.1fr] lg:items-end lg:gap-16">
         <div>
           <p className="eyebrow">{eyebrow}</p>
           <Title className="display mt-4 text-balance text-4xl text-ink sm:text-5xl">{title}</Title>

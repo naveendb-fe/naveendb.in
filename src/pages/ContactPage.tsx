@@ -8,7 +8,7 @@ export function ContactPage() {
     <>
       <Seo
         title="Contact"
-        description="Get in touch with Naveen DB — email, LinkedIn, GitHub, and CV."
+        description="Get in touch with Naveen DB — email, LinkedIn, GitHub, Medium, and CV."
         path="/contact"
       />
       <PageEnter>
@@ -21,22 +21,22 @@ export function ContactPage() {
               description="Open to conversations with peers and hiring managers about frontend craft, React systems, and product UI."
             />
 
-            <div className="mt-14 max-w-2xl border border-line/80">
+            <div className="glass mt-14 max-w-2xl overflow-hidden rounded-2xl">
               <a
                 href={`mailto:${site.email}`}
-                className="group block border-b border-line/80 px-6 py-8 transition hover:bg-ink/[0.02] sm:px-8"
+                className="group block border-b border-white/[0.07] px-6 py-8 transition hover:bg-accent/[0.04] sm:px-8"
               >
                 <p className="eyebrow">Email</p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-ink transition group-hover:translate-x-1 sm:text-3xl">
+                <p className="mt-3 text-2xl font-semibold tracking-tight text-ink transition group-hover:translate-x-1 group-hover:text-accent sm:text-3xl">
                   {site.email}
                 </p>
               </a>
-              <div className="grid sm:grid-cols-3">
+              <div className="grid sm:grid-cols-2">
                 <a
                   href={site.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="border-b border-line/80 px-6 py-6 transition hover:bg-ink/[0.02] sm:border-r sm:px-8"
+                  className="border-b border-white/[0.07] px-6 py-6 transition hover:bg-accent/[0.04] sm:border-r sm:border-white/[0.07] sm:px-8"
                 >
                   <p className="eyebrow">Social</p>
                   <p className="mt-2 font-medium text-ink">LinkedIn →</p>
@@ -45,12 +45,21 @@ export function ContactPage() {
                   href={site.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="border-b border-line/80 px-6 py-6 transition hover:bg-ink/[0.02] sm:border-r sm:px-8"
+                  className="border-b border-white/[0.07] px-6 py-6 transition hover:bg-accent/[0.04] sm:px-8"
                 >
                   <p className="eyebrow">Code</p>
                   <p className="mt-2 font-medium text-ink">GitHub →</p>
                 </a>
-                <div className="border-b border-line/80 px-6 py-6 sm:px-8">
+                <a
+                  href={site.medium}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-b border-white/[0.07] px-6 py-6 transition hover:bg-accent/[0.04] sm:border-r sm:border-white/[0.07] sm:px-8"
+                >
+                  <p className="eyebrow">Writing</p>
+                  <p className="mt-2 font-medium text-ink">Medium →</p>
+                </a>
+                <div className="border-b border-white/[0.07] px-6 py-6 sm:px-8">
                   <p className="eyebrow">Based in</p>
                   <p className="mt-2 font-medium text-ink">{site.location}</p>
                 </div>

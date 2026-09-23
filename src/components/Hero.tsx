@@ -17,7 +17,7 @@ export function Hero() {
   const my = useMotionValue(0.5)
   const sx = useSpring(mx, { stiffness: 70, damping: 22 })
   const sy = useSpring(my, { stiffness: 70, damping: 22 })
-  const spotlight = useMotionTemplate`radial-gradient(560px circle at ${sx}% ${sy}%, rgba(10,10,11,0.06), transparent 55%)`
+  const spotlight = useMotionTemplate`radial-gradient(560px circle at ${sx}% ${sy}%, rgba(158,197,200,0.09), transparent 55%)`
 
   function onMove(e: MouseEvent<HTMLElement>) {
     if (reduce || !ref.current) return
@@ -30,16 +30,16 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative overflow-hidden grain" onMouseMove={onMove}>
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-60" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 grid-bg opacity-70" aria-hidden="true" />
       {!reduce ? (
         <motion.div
-          className="pointer-events-none absolute inset-0 opacity-80"
+          className="pointer-events-none absolute inset-0 opacity-90"
           aria-hidden="true"
           style={{ background: spotlight }}
         />
       ) : null}
 
-      <div className="mx-auto grid min-h-[calc(100svh-3.75rem)] max-w-6xl items-center gap-12 px-5 pb-24 pt-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-28 lg:pt-10">
+      <div className="relative z-[1] mx-auto grid min-h-[calc(100svh-3.75rem)] max-w-6xl items-center gap-12 px-5 pb-24 pt-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-28 lg:pt-10">
         <div>
           <motion.p
             className="eyebrow"
@@ -105,7 +105,7 @@ export function Hero() {
             {hero.stack.map((item) => (
               <li
                 key={item}
-                className="border border-line/90 px-2.5 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
+                className="rounded border border-white/[0.08] bg-surface/50 px-2.5 py-1 font-mono text-[11px] tracking-wide text-ink-muted backdrop-blur-sm"
               >
                 {item}
               </li>

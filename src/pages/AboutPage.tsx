@@ -24,7 +24,7 @@ export function AboutPage() {
                 {experience.map((job, index) => (
                   <li
                     key={`${job.company}-${job.period}`}
-                    className="grid gap-3 border-t border-line/80 py-8 sm:grid-cols-[6rem_1fr] sm:gap-10"
+                    className="grid gap-3 border-t border-white/[0.07] py-8 sm:grid-cols-[6rem_1fr] sm:gap-10"
                   >
                     <span className="font-mono text-xs text-ink-muted tabular-nums">
                       {String(index + 1).padStart(2, '0')}
@@ -41,7 +41,7 @@ export function AboutPage() {
                     </div>
                   </li>
                 ))}
-                <li className="border-t border-line/80" />
+                <li className="border-t border-white/[0.07]" />
               </ol>
 
               <div className="mt-6">
@@ -54,9 +54,12 @@ export function AboutPage() {
 
             <div className="mt-20">
               <p className="eyebrow">Recommendations</p>
-              <div className="mt-8 space-y-10 border-t border-line/80 pt-10">
+              <div className="mt-8 space-y-10 border-t border-white/[0.07] pt-10">
                 {testimonials.map((t) => (
-                  <blockquote key={t.name} className="max-w-2xl">
+                  <blockquote
+                    key={t.name}
+                    className="glass max-w-2xl rounded-xl border-l-2 border-l-accent/35 px-5 py-5 sm:px-6"
+                  >
                     <p className="text-[1.05rem] leading-relaxed text-ink-muted">
                       &ldquo;{t.quote}&rdquo;
                     </p>
@@ -71,16 +74,23 @@ export function AboutPage() {
 
             <div className="mt-20">
               <p className="eyebrow">Writing</p>
-              <ul className="mt-8 border-t border-line/80">
+              <ul className="mt-8 overflow-hidden rounded-xl border border-white/[0.07] bg-surface/40">
                 {notes.map((note) => (
-                  <li key={note.href} className="border-b border-line/80">
+                  <li key={note.href} className="border-b border-white/[0.06] last:border-b-0">
                     <a
                       href={note.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="group block max-w-2xl py-7"
+                      className="group block max-w-2xl px-5 py-7 transition hover:bg-accent/[0.04] sm:px-6"
                     >
-                      <h3 className="text-lg font-semibold tracking-tight text-ink transition group-hover:translate-x-1">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] tracking-wide text-ink-muted">
+                        <span>{note.topic}</span>
+                        <span className="h-px w-4 bg-line" aria-hidden="true" />
+                        <span>{note.date}</span>
+                        <span className="h-px w-4 bg-line" aria-hidden="true" />
+                        <span>Medium</span>
+                      </div>
+                      <h3 className="mt-3 text-lg font-semibold tracking-tight text-ink transition group-hover:translate-x-1 group-hover:text-accent">
                         {note.title}
                       </h3>
                       <p className="mt-2 text-ink-muted">{note.blurb}</p>
@@ -91,12 +101,12 @@ export function AboutPage() {
               <p className="mt-6 font-mono text-xs text-ink-muted">
                 More on{' '}
                 <a
-                  className="underline decoration-line underline-offset-4 transition hover:decoration-ink"
-                  href={site.linkedin}
+                  className="underline decoration-line underline-offset-4 transition hover:decoration-accent hover:text-accent"
+                  href={site.medium}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  LinkedIn
+                  Medium
                 </a>
               </p>
             </div>

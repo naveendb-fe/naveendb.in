@@ -10,7 +10,7 @@ export function FocusSection() {
     <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
-          className="max-w-2xl border-l border-ink/20 pl-6 sm:pl-8"
+          className="glass max-w-2xl rounded-2xl border-l-2 border-l-accent/40 px-6 py-8 sm:px-8 sm:py-10"
           initial={reduce ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-10% 0px' }}
@@ -23,7 +23,7 @@ export function FocusSection() {
           <p className="mt-4 text-base leading-relaxed text-ink-muted">{focus.body}</p>
           <Link
             to="/work/granicus-design-system"
-            className="mt-6 inline-flex font-mono text-sm text-ink-muted transition hover:text-ink"
+            className="mt-6 inline-flex font-mono text-sm text-ink-muted transition hover:text-accent"
           >
             Read the case study →
           </Link>
