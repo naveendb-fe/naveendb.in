@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Naveen DB — CV</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 13mm 16mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: #0a0a0b;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 9.5pt;
+        line-height: 1.4;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .masthead {
+        margin: -13mm -16mm 10mm;
+        padding: 12mm 16mm 11mm;
+        background: #373d49;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+      }
+      .masthead-left {
+        min-width: 0;
+      }
+      .masthead-right {
+        text-align: right;
+        font-size: 9pt;
+        line-height: 1.45;
+        flex-shrink: 0;
+      }
+      .masthead-right .soft {
+        color: #d2d6dc;
+        font-size: 8.5pt;
+      }
+      h1 {
+        margin: 0;
+        font-size: 24pt;
+        letter-spacing: 0.04em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      .role {
+        margin: 8px 0 0;
+        font-size: 10.5pt;
+        font-weight: 500;
+        color: #d2d6dc;
+      }
+      h2 {
+        margin: 14px 0 6px;
+        padding-bottom: 4px;
+        border-bottom: 1.5px solid #0a0a0b;
+        font-size: 8pt;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .summary {
+        margin: 0;
+        color: #202428;
+      }
+      .skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px 18px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .skills li,
+      .job ul li {
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 3px;
+        color: #202428;
+      }
+      .skills li::before,
+      .job ul li::before {
+        content: '';
+        position: absolute;
+        left: 1px;
+        top: 0.45em;
+        width: 3.5px;
+        height: 3.5px;
+        background: #0a0a0b;
+      }
+      .job {
+        margin-bottom: 10px;
+        page-break-inside: avoid;
+      }
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+      }
+      .job-head strong {
+        font-size: 10.25pt;
+      }
+      .dates {
+        color: #5c6570;
+        font-size: 8pt;
+        white-space: nowrap;
+        font-family: ui-monospace, Menlo, monospace;
+      }
+      .title {
+        margin-top: 2px;
+        font-weight: 500;
+        font-size: 9.5pt;
+      }
+      .loc {
+        margin-top: 1px;
+        color: #5c6570;
+        font-size: 8.5pt;
+      }
+      .job ul {
+        margin: 5px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .edu-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+      }
+      .edu-head strong {
+        font-size: 10.25pt;
+      }
+      .footer-note {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 7.5pt;
+        color: #5c6570;
+        font-family: ui-monospace, Menlo, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="masthead-left">
+        <h1>Naveen DB</h1>
+        <p class="role">Senior Frontend Engineer</p>
+      </div>
+      <div class="masthead-right">
+        Bangalore, India<br />
+        <a href="mailto:naveendb92@gmail.com">naveendb92@gmail.com</a>
+        /
+        +91 99169 72978<br />
+        <span class="soft">
+          <a href="https://naveendb.in" target="_blank" rel="noopener noreferrer">naveendb.in</a>
+          /
+          <a href="https://www.linkedin.com/in/naveendb92" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          /
+          <a href="https://github.com/naveendb-fe" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </span>
+      </div>
+    </header>
+
+    <h2>Summary</h2>
+    <p class="summary">
+      Senior frontend engineer with 10+ years building product UI and design systems.
+      Currently at Granicus Inc. owning and evolving the Granicus Design System —
+      shared React foundations, components, patterns, and docs so teams ship consistent,
+      accessible interfaces. Earlier: enterprise analytics and IoT surfaces at Accenture AI,
+      Kogentix, and Flutura.
+    </p>
+
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li>React</li>
+      <li>CSS / SCSS</li>
+      <li>Next.js</li>
+      <li>Design systems</li>
+      <li>Vue</li>
+      <li>Accessibility</li>
+      <li>Angular</li>
+      <li>Storybook</li>
+      <li>TypeScript</li>
+      <li>Jest / Testing Library</li>
+      <li>Redux</li>
+      <li>Figma</li>
+    </ul>
+
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <strong>Granicus Inc.</strong>
+        <div class="dates">Sep 2022 - Present</div>
+      </div>
+      <div class="title">Senior Frontend Engineer</div>
+      <div class="loc">Bangalore</div>
+      <ul>
+        <li>
+          Own and evolve the Granicus Design System: tokens, foundations, React components,
+          patterns, and contribution guidelines.
+        </li>
+        <li>
+          Align design and engineering through Figma libraries and Storybook so libraries
+          and code stay in sync.
+        </li>
+        <li>
+          Raise the bar on accessibility, consistency, and predictable interaction across
+          multi-product adoption.
+        </li>
+        <li>
+          Document patterns as recipes for common flows - forms, filters, progressive
+          disclosure, notifications.
+        </li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <strong>Accenture AI</strong>
+        <div class="dates">Dec 2018 - Sep 2022</div>
+      </div>
+      <div class="title">Front-end Engineer</div>
+      <div class="loc">Bangalore · via Kogentix acquisition</div>
+      <ul>
+        <li>
+          Shipped analytics and insights product UI for enterprise clients with Next.js,
+          React, and Vue.
+        </li>
+        <li>
+          Led frontend on Delivery Inaccuracy (Next.js reporting) and MCInsights
+          (Vue insights shell).
+        </li>
+        <li>
+          Built React expense UI (Zero Quartile) with Redux and D3 visualizations for
+          spend profiling.
+        </li>
+        <li>
+          Worked daily with design, engineering, and stakeholders across multi-disciplinary teams.
+        </li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <strong>Kogentix Inc.</strong>
+        <div class="dates">Jun 2017 - Nov 2018</div>
+      </div>
+      <div class="title">UI Engineer</div>
+      <div class="loc">Bangalore</div>
+      <ul>
+        <li>
+          Built Angular + TypeScript interfaces for Asset Insights (IoT) and AMP
+          (Automated ML Platform).
+        </li>
+        <li>Owned Rule Engine module work with design and engineering partners.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <strong>Flutura Decision Sciences &amp; Analytics</strong>
+        <div class="dates">Aug 2015 - May 2017</div>
+      </div>
+      <div class="title">Programmer / Frontend Developer</div>
+      <div class="loc">Bangalore</div>
+      <ul>
+        <li>
+          Developed IoT and analytics UIs for supply-chain and solar operations on
+          Django/jQuery stacks.
+        </li>
+        <li>Joined weekly client product and implementation discussions.</li>
+      </ul>
+    </div>
+
+    <h2>Education</h2>
+    <div class="edu-head">
+      <strong>Cambridge Institute of Technology</strong>
+      <div class="dates">2011 - 2015</div>
+    </div>
+    <div class="title">B.E. Computer Science Engineering</div>
+    <div class="loc">Bangalore</div>
+
+    <p class="footer-note">naveendb.in</p>
+  </body>
+</html>

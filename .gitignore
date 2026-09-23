@@ -26,3 +26,7 @@ dist-ssr
 .bin/
 dist/
 .DS_Store
+
+# Local CV / screenshot redaction backups
+scripts/.branding-backup/
+scripts/cv-preview.png

@@ -1,5 +1,6 @@
+import { useEffect, useId, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { site } from '../content/site'
 
 const links = [
@@ -9,24 +10,52 @@ const links = [
 ] as const
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false)
+  const panelId = useId()
+  const reduce = useReducedMotion()
+
+  useEffect(() => {
+    if (!open) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   return (
-    <header className="sticky top-0 z-50 border-b border-line/60 bg-paper/75 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:h-[3.75rem] sm:px-8">
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/80 backdrop-blur-xl">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:bg-ink focus:px-3 focus:py-2 focus:text-sm focus:text-paper"
+      >
+        Skip to content
+      </a>
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:h-16 sm:px-8">
         <Link
           to="/"
-          className="group relative text-[15px] font-semibold tracking-tight text-ink"
+          className="group relative display text-[15px] tracking-[-0.03em] text-ink"
+          onClick={() => setOpen(false)}
         >
           {site.name}
           <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-ink transition-all duration-300 group-hover:w-full" />
         </Link>
-        <nav className="flex items-center gap-0.5 sm:gap-1" aria-label="Primary">
+
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {links.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
                 [
-                  'relative px-2.5 py-1.5 text-sm transition-colors sm:px-3',
+                  'relative px-3 py-1.5 text-sm transition-colors',
                   isActive ? 'text-ink' : 'text-ink-muted hover:text-ink',
                 ].join(' ')
               }
@@ -37,7 +66,7 @@ export function SiteHeader() {
                   {isActive ? (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute inset-x-2.5 bottom-0.5 h-px bg-ink sm:inset-x-3"
+                      className="absolute inset-x-3 bottom-0.5 h-px bg-ink"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   ) : null}
@@ -45,11 +74,63 @@ export function SiteHeader() {
               )}
             </NavLink>
           ))}
-          <a href={site.cvPath} download className="btn-primary ml-2 px-3 py-1.5 sm:ml-3">
+          <a href={site.cvPath} download className="btn-primary ml-3 px-3 py-1.5">
             CV
           </a>
         </nav>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <a href={site.cvPath} download className="btn-primary px-3 py-1.5 text-xs">
+            CV
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center border border-line text-ink"
+            aria-expanded={open}
+            aria-controls={panelId}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="sr-only">Menu</span>
+            <span aria-hidden="true" className="font-mono text-lg leading-none">
+              {open ? '×' : '☰'}
+            </span>
+          </button>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.nav
+            id={panelId}
+            className="border-t border-ink/10 bg-paper md:hidden"
+            aria-label="Mobile"
+            initial={reduce ? false : { height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={reduce ? undefined : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <ul className="px-5 py-4">
+              {links.map((link) => (
+                <li key={link.to}>
+                  <NavLink
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      [
+                        'block border-b border-line/70 py-4 text-base',
+                        isActive ? 'text-ink' : 'text-ink-muted',
+                      ].join(' ')
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
+        ) : null}
+      </AnimatePresence>
     </header>
   )
 }

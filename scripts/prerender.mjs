@@ -15,10 +15,12 @@ const site = {
   name: 'Naveen DB',
   title: 'Naveen DB | Senior Frontend Engineer',
   description:
-    'Senior Frontend Engineer at Granicus Inc. — building the Granicus Design System and accessible React product UI.',
+    'Senior frontend engineer building design systems and accessible React product UI. Currently at Granicus Inc.',
   url: 'https://naveendb.in',
+  ogImage: 'https://naveendb.in/og.jpg',
 }
 
+/** Keep paths / titles in sync with src/content/work.ts */
 const workRoutes = [
   {
     path: '/work/granicus-design-system',
@@ -48,7 +50,7 @@ const workRoutes = [
     path: '/work/compassionate-hr',
     title: `Compassionate HR | ${site.name}`,
     description:
-      'Compassionate HR — jQuery site helping HR teams navigate compassion-needed situations at Accenture AI.',
+      'Compassionate HR — site helping HR teams navigate compassion-needed situations at Accenture AI.',
   },
   {
     path: '/work/iot-asset-management',
@@ -92,13 +94,13 @@ const routes = [
     path: '/work',
     title: `Work | ${site.name}`,
     description:
-      'Selected work — Granicus Design System, Delivery Inaccuracy, MCInsights, and earlier product UIs.',
+      'Case studies — Granicus Design System, Delivery Inaccuracy, and earlier product UI archive.',
   },
   {
     path: '/about',
     title: `About | ${site.name}`,
     description:
-      'Senior frontend engineer at Granicus Inc. building the Granicus Design System — React, TypeScript, accessibility.',
+      'Senior frontend engineer in Bangalore — design systems, React, and accessible product UI. Currently at Granicus Inc.',
   },
   {
     path: '/contact',
@@ -127,6 +129,14 @@ function injectMeta(html, { path, title, description }) {
   out = out.replace(
     /<meta\s+property="og:url"\s+content="[^"]*"\s*\/>/,
     `<meta property="og:url" content="${url}" />`,
+  )
+  out = out.replace(
+    /<meta\s+property="og:image"\s+content="[^"]*"\s*\/>/,
+    `<meta property="og:image" content="${site.ogImage}" />`,
+  )
+  out = out.replace(
+    /<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/>/,
+    `<meta name="twitter:image" content="${site.ogImage}" />`,
   )
   return out
 }

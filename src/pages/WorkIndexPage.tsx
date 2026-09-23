@@ -2,14 +2,17 @@ import { Seo } from '../components/Seo'
 import { PageEnter } from '../components/PageEnter'
 import { SectionHeading } from '../components/SectionHeading'
 import { WorkList } from '../components/WorkList'
-import { caseStudies } from '../content/work'
+import { getArchiveWork, getPrimaryWork } from '../content/work'
 
 export function WorkIndexPage() {
+  const primary = getPrimaryWork()
+  const archive = getArchiveWork()
+
   return (
     <>
       <Seo
         title="Work"
-        description="Selected work — Granicus Design System, Delivery Inaccuracy, MCInsights, and earlier product UIs."
+        description="Case studies — Granicus Design System, Delivery Inaccuracy, and earlier product UI archive."
         path="/work"
       />
       <PageEnter>
@@ -19,10 +22,24 @@ export function WorkIndexPage() {
               as="h1"
               eyebrow="Work"
               title="Case studies"
-              description="Granicus Design System today, plus earlier product work across Accenture AI, Kogentix, and Flutura."
+              description="Primary depth first. Earlier product work lives in the archive below."
             />
+
             <div className="mt-14">
-              <WorkList items={caseStudies} />
+              <p className="eyebrow">Primary</p>
+              <div className="mt-6">
+                <WorkList items={primary} />
+              </div>
+            </div>
+
+            <div className="mt-20">
+              <p className="eyebrow">Archive</p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
+                Earlier Accenture AI, Kogentix, and Flutura product surfaces — shorter notes, not full visual case studies.
+              </p>
+              <div className="mt-6">
+                <WorkList items={archive} startIndex={primary.length + 1} />
+              </div>
             </div>
           </div>
         </main>

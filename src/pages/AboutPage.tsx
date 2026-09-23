@@ -1,22 +1,14 @@
 import { Seo } from '../components/Seo'
 import { PageEnter } from '../components/PageEnter'
 import { SectionHeading } from '../components/SectionHeading'
-import {
-  about,
-  education,
-  educationEarlier,
-  experience,
-  notes,
-  site,
-  testimonials,
-} from '../content/site'
+import { about, education, experience, notes, site, testimonials } from '../content/site'
 
 export function AboutPage() {
   return (
     <>
       <Seo
         title="About"
-        description="Senior frontend engineer at Granicus Inc. building the Granicus Design System — React, TypeScript, accessibility."
+        description="Senior frontend engineer in Bangalore — design systems, React, and accessible product UI. Currently at Granicus Inc."
         path="/about"
       />
       <PageEnter>
@@ -24,13 +16,14 @@ export function AboutPage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading as="h1" eyebrow="About" title={about.lead} />
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">{about.body}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink">{about.now}</p>
 
             <div className="mt-20">
               <p className="eyebrow">Experience</p>
               <ol className="mt-8">
                 {experience.map((job, index) => (
                   <li
-                    key={job.company}
+                    key={`${job.company}-${job.period}`}
                     className="grid gap-3 border-t border-line/80 py-8 sm:grid-cols-[6rem_1fr] sm:gap-10"
                   >
                     <span className="font-mono text-xs text-ink-muted tabular-nums">
@@ -51,31 +44,23 @@ export function AboutPage() {
                 <li className="border-t border-line/80" />
               </ol>
 
-              <div className="mt-6 border border-line/80 px-5 py-5 sm:px-6">
+              <div className="mt-6">
                 <p className="eyebrow">Education</p>
-                <p className="mt-4 text-sm text-ink">
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
                   {education.degree} · {education.school} · {education.period}
                 </p>
-                {educationEarlier.map((item) => (
-                  <p key={item.school} className="mt-2 text-sm text-ink-muted">
-                    {item.degree} · {item.school} · {item.period}
-                  </p>
-                ))}
               </div>
             </div>
 
             <div className="mt-20">
               <p className="eyebrow">Recommendations</p>
-              <div className="mt-8 grid gap-0 border-t border-l border-line/80 md:grid-cols-2">
+              <div className="mt-8 space-y-10 border-t border-line/80 pt-10">
                 {testimonials.map((t) => (
-                  <blockquote
-                    key={t.name}
-                    className="border-r border-b border-line/80 p-6 sm:p-8"
-                  >
+                  <blockquote key={t.name} className="max-w-2xl">
                     <p className="text-[1.05rem] leading-relaxed text-ink-muted">
                       &ldquo;{t.quote}&rdquo;
                     </p>
-                    <footer className="mt-6 text-sm">
+                    <footer className="mt-4 text-sm">
                       <span className="font-semibold text-ink">{t.name}</span>
                       <span className="text-ink-muted"> — {t.context}</span>
                     </footer>

@@ -1,203 +1,248 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+  type MotionValue,
+} from 'framer-motion'
 
-const modules = [
-  { id: '01', label: 'Foundations', meta: 'Color · type · space' },
-  { id: '02', label: 'Components', meta: 'React · Storybook' },
-  { id: '03', label: 'Patterns', meta: 'Forms · filters · a11y' },
-  { id: '04', label: 'Guidelines', meta: 'Design · contribute' },
+const states = ['Default', 'Hover', 'Focus', 'Loading'] as const
+
+const tokens = [
+  { id: 'color', label: 'color.action', value: '#0A0A0B' },
+  { id: 'space', label: 'space.3', value: '12px' },
+  { id: 'type', label: 'type.label', value: '14 / 500' },
+  { id: 'radius', label: 'radius.sm', value: '4px' },
 ] as const
 
-const signals = [
-  { label: 'System', value: 'GDS' },
-  { label: 'Stack', value: 'React' },
-  { label: 'Quality', value: 'a11y' },
-] as const
+type HeroVisualProps = {
+  pointerX?: MotionValue<number>
+  pointerY?: MotionValue<number>
+  reduceMotion?: boolean
+}
 
-export function HeroVisual() {
-  const reduce = useReducedMotion()
+export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps) {
+  const reduceHook = useReducedMotion()
+  const reduce = reduceMotion ?? !!reduceHook
+  const fallbackX = useMotionValue(50)
+  const fallbackY = useMotionValue(50)
+  const x = pointerX ?? fallbackX
+  const y = pointerY ?? fallbackY
+
+  const rotateX = useTransform(y, (v) => (50 - v) * 0.06)
+  const rotateY = useTransform(x, (v) => (v - 50) * 0.08)
+  const frameX = useTransform(x, (v) => (v - 50) * -0.18)
+  const frameY = useTransform(y, (v) => (v - 50) * -0.12)
+  const cardX = useTransform(x, (v) => (v - 50) * 0.28)
+  const cardY = useTransform(y, (v) => (v - 50) * 0.2)
+  const chipX = useTransform(x, (v) => (v - 50) * 0.14)
+
+  const [stateIndex, setStateIndex] = useState(0)
+  const activeState = states[stateIndex]
+
+  useEffect(() => {
+    if (reduce) return
+    const id = window.setInterval(() => {
+      setStateIndex((i) => (i + 1) % states.length)
+    }, 1800)
+    return () => window.clearInterval(id)
+  }, [reduce])
 
   return (
     <div
-      className="relative mx-auto h-full min-h-[340px] w-full max-w-lg sm:min-h-[420px] lg:max-w-none"
+      className="relative mx-auto h-full min-h-[360px] w-full max-w-lg [perspective:1400px] sm:min-h-[480px] lg:max-w-none"
       aria-hidden="true"
     >
+      {/* Atmosphere */}
+      <motion.div
+        className="absolute -right-8 top-0 h-72 w-72 rounded-full border border-line/60 sm:-right-6 sm:h-96 sm:w-96"
+        animate={reduce ? undefined : { rotate: 360 }}
+        transition={{ duration: 120, repeat: Infinity, ease: 'linear' }}
+      />
+      <div className="absolute right-10 top-20 h-44 w-44 rounded-full border border-dashed border-line/70 sm:h-56 sm:w-56" />
+      <motion.div
+        className="absolute bottom-16 left-2 h-24 w-24 rounded-full border border-line/50"
+        animate={reduce ? undefined : { scale: [1, 1.06, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
       <motion.div
         className="absolute inset-0"
         initial={reduce ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.7 }}
+        style={
+          reduce
+            ? undefined
+            : {
+                rotateX,
+                rotateY,
+                transformStyle: 'preserve-3d',
+              }
+        }
       >
+        {/* Main product plane — real GDS proof */}
         <motion.div
-          className="absolute -right-12 top-0 h-72 w-72 rounded-full border border-line/70 sm:h-96 sm:w-96"
-          animate={reduce ? undefined : { rotate: 360 }}
-          transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
-        />
-        <div className="absolute right-6 top-14 h-48 w-48 rounded-full border border-dashed border-line/80 sm:h-60 sm:w-60" />
-
-        <motion.div
-          className="surface absolute inset-x-0 bottom-6 top-10 flex flex-col overflow-hidden rounded-2xl sm:inset-x-1 sm:bottom-8 sm:top-12"
-          initial={reduce ? false : { y: 24, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-x-0 top-6 bottom-14 overflow-hidden rounded-2xl border border-line/80 bg-surface shadow-[0_28px_80px_-40px_rgba(10,10,11,0.55)] sm:inset-x-1 sm:top-8 sm:bottom-16"
+          initial={reduce ? false : { y: 36, opacity: 0, scale: 0.96 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          transition={{ delay: 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={reduce ? undefined : { x: frameX, y: frameY }}
         >
-          {/* chrome */}
-          <div className="flex items-center justify-between border-b border-line/70 px-4 py-3 sm:px-5">
+          <div className="flex items-center justify-between border-b border-line/70 px-4 py-2.5">
             <div className="flex gap-1.5">
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-ink/35" />
             </div>
-            <div className="flex items-center gap-3">
-              <span className="hidden font-mono text-[10px] tracking-wider text-ink-muted uppercase sm:inline">
-                granicus
-              </span>
-              <span className="font-mono text-[10px] tracking-wider text-ink uppercase">
-                gds.system
-              </span>
-            </div>
-          </div>
-
-          {/* body */}
-          <div className="grid min-h-0 flex-1 grid-cols-[4.5rem_1fr] sm:grid-cols-[5.25rem_1fr]">
-            {/* side rail */}
-            <div className="flex flex-col gap-2 border-r border-line/70 bg-ink/[0.02] px-2 py-3 sm:px-2.5 sm:py-4">
-              {['H', 'W', 'A', 'C'].map((letter, i) => (
-                <motion.div
-                  key={letter}
-                  className={[
-                    'flex h-8 items-center justify-center rounded-md font-mono text-[10px] sm:h-9',
-                    i === 0
-                      ? 'bg-ink text-paper'
-                      : 'border border-line/70 text-ink-muted',
-                  ].join(' ')}
-                  initial={reduce ? false : { opacity: 0, x: -6 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25 + i * 0.05, duration: 0.35 }}
-                >
-                  {letter}
-                </motion.div>
-              ))}
-              <div className="mt-auto space-y-1.5 px-1 pb-1">
-                <div className="h-1 rounded-full bg-ink/50" />
-                <div className="h-1 w-2/3 rounded-full bg-line" />
-              </div>
-            </div>
-
-            {/* main canvas */}
-            <div className="flex min-h-0 flex-col px-3 py-3 sm:px-4 sm:py-4">
-              <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-2 font-mono text-[10px] leading-relaxed sm:text-[11px]">
-                <span className="text-ink-muted">01</span>
-                <p>
-                  <span className="text-ink-muted">role</span>{' '}
-                  <span className="text-ink">Senior Frontend</span>
-                </p>
-                <span className="text-ink-muted">02</span>
-                <p>
-                  <span className="text-ink-muted">focus</span>{' '}
-                  <span className="text-ink">Design system</span>
-                </p>
-                <span className="text-ink-muted">03</span>
-                <p>
-                  <span className="text-ink-muted">org</span>{' '}
-                  <span className="text-ink">Granicus Inc.</span>
-                </p>
-              </div>
-
-              <div className="mt-4 grid grid-cols-3 gap-2">
-                {signals.map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    className="rounded-lg border border-line/80 px-2 py-2 sm:px-2.5"
-                    initial={reduce ? false : { opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.35 + i * 0.06, duration: 0.4 }}
-                  >
-                    <p className="font-mono text-[9px] tracking-wider text-ink-muted uppercase">
-                      {item.label}
-                    </p>
-                    <p className="mt-1 text-xs font-semibold tracking-tight text-ink sm:text-sm">
-                      {item.value}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-4 min-h-0 flex-1 overflow-hidden border-t border-line/70 pt-3">
-                <div className="mb-2 flex items-center justify-between">
-                  <p className="font-mono text-[10px] tracking-wider text-ink-muted uppercase">
-                    Modules
-                  </p>
-                  <p className="font-mono text-[10px] text-ink-muted">4 active</p>
-                </div>
-                <ul className="space-y-1.5">
-                  {modules.map((mod, i) => (
-                    <motion.li
-                      key={mod.id}
-                      className="flex items-center gap-2 rounded-md border border-line/70 px-2.5 py-2"
-                      initial={reduce ? false : { opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.45 + i * 0.05, duration: 0.35 }}
-                    >
-                      <span className="font-mono text-[10px] text-ink-muted tabular-nums">
-                        {mod.id}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-xs font-medium text-ink">{mod.label}</p>
-                        <p className="truncate font-mono text-[9px] text-ink-muted">{mod.meta}</p>
-                      </div>
-                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ink/45" />
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-3 space-y-1.5 pb-10 sm:pb-12">
-                <div className="h-1 overflow-hidden rounded-full bg-line/50">
-                  <motion.div
-                    className="h-full rounded-full bg-ink/65"
-                    initial={reduce ? { width: '78%' } : { width: 0 }}
-                    animate={{ width: '78%' }}
-                    transition={{ delay: 0.7, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </div>
-                <div className="h-1 overflow-hidden rounded-full bg-line/50">
-                  <motion.div
-                    className="h-full rounded-full bg-ink/35"
-                    initial={reduce ? { width: '52%' } : { width: 0 }}
-                    animate={{ width: '52%' }}
-                    transition={{ delay: 0.82, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* floating status */}
-        <motion.div
-          className="surface absolute bottom-1 right-0 w-[48%] rounded-xl p-3.5 sm:bottom-2 sm:-right-1 sm:w-48"
-          initial={reduce ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.55 }}
-        >
-          <div className="flex items-center justify-between">
-            <p className="font-mono text-[10px] tracking-wider text-ink-muted uppercase">Now</p>
-            <span className="rounded border border-line px-1.5 py-0.5 font-mono text-[9px] text-ink-muted">
-              live
+            <span className="font-mono text-[10px] tracking-[0.18em] text-ink-muted uppercase">
+              gds · docs
             </span>
           </div>
-          <p className="mt-1.5 text-sm font-semibold tracking-tight text-ink">
-            Granicus Design System
-          </p>
-          <div className="mt-3 flex gap-1">
-            <span className="h-1 flex-1 rounded-full bg-ink/55" />
-            <span className="h-1 flex-1 rounded-full bg-ink/25" />
-            <span className="h-1 flex-1 rounded-full bg-line" />
+
+          <div className="relative h-[calc(100%-2.25rem)] overflow-hidden bg-ink/[0.03]">
+            <img
+              src="/work/gds/docs-home.png"
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover object-top"
+              loading="eager"
+              decoding="async"
+            />
+            {/* Soft vignette so overlays read cleanly */}
+            <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-paper/20" />
+            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-paper/70 to-transparent" />
+
+            {/* Scan line */}
+            {!reduce ? (
+              <motion.div
+                className="absolute inset-x-0 h-px bg-ink/25"
+                initial={{ top: '12%' }}
+                animate={{ top: ['12%', '78%', '12%'] }}
+                transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            ) : null}
+
+            {/* Annotation callouts on the screenshot */}
+            <motion.div
+              className="absolute left-3 top-[38%] hidden max-w-[9.5rem] rounded-md border border-line/80 bg-paper/95 px-2.5 py-2 shadow-sm backdrop-blur-sm sm:left-4 sm:block"
+              initial={reduce ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55, duration: 0.45 }}
+              style={reduce ? undefined : { x: chipX }}
+            >
+              <p className="font-mono text-[9px] tracking-wider text-ink-muted uppercase">Inspect</p>
+              <p className="mt-1 text-[11px] font-medium leading-snug text-ink">
+                Shared foundations for every product surface
+              </p>
+              <span className="absolute -right-3 top-1/2 h-px w-3 bg-ink/40" />
+            </motion.div>
+
+            <motion.div
+              className="absolute right-3 top-[22%] rounded-md border border-line/80 bg-paper/95 px-2 py-1.5 font-mono text-[10px] text-ink shadow-sm backdrop-blur-sm sm:right-4"
+              initial={reduce ? false : { opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.4 }}
+            >
+              contrast AA · pass
+            </motion.div>
           </div>
         </motion.div>
 
+        {/* Living component card — state machine */}
         <motion.div
-          className="absolute left-0 top-4 h-px w-28 bg-ink/45 sm:w-36"
+          className="surface absolute -left-1 top-2 z-10 w-[58%] rounded-xl p-3.5 sm:left-0 sm:top-3 sm:w-56 sm:p-4"
+          initial={reduce ? false : { opacity: 0, y: 18, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          style={reduce ? undefined : { x: cardX, y: cardY }}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <p className="font-mono text-[10px] tracking-[0.16em] text-ink-muted uppercase">
+              Button
+            </p>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={activeState}
+                className="rounded border border-line px-1.5 py-0.5 font-mono text-[9px] text-ink"
+                initial={reduce ? false : { opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduce ? undefined : { opacity: 0, y: -4 }}
+                transition={{ duration: 0.2 }}
+              >
+                {activeState}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+
+          <div className="mt-4 flex min-h-11 items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeState}
+                initial={reduce ? false : { opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={reduce ? undefined : { opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.22 }}
+                className={[
+                  'inline-flex min-w-[7.5rem] items-center justify-center rounded px-4 py-2 text-sm font-medium tracking-tight',
+                  activeState === 'Default' ? 'bg-ink text-paper' : '',
+                  activeState === 'Hover' ? 'bg-ink/85 text-paper shadow-[0_10px_24px_-14px_rgba(10,10,11,0.7)]' : '',
+                  activeState === 'Focus'
+                    ? 'bg-ink text-paper outline outline-2 outline-offset-2 outline-ink/50'
+                    : '',
+                  activeState === 'Loading' ? 'bg-ink/70 text-paper/90' : '',
+                ].join(' ')}
+              >
+                {activeState === 'Loading' ? (
+                  <span className="flex items-center gap-2">
+                    <span className="h-3 w-3 animate-spin rounded-full border border-paper/30 border-t-paper" />
+                    Saving
+                  </span>
+                ) : (
+                  'Continue'
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="mt-4 flex gap-1">
+            {states.map((state, i) => (
+              <span
+                key={state}
+                className={[
+                  'h-1 flex-1 rounded-full transition-colors duration-300',
+                  i === stateIndex ? 'bg-ink' : 'bg-line',
+                ].join(' ')}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Token strip */}
+        <motion.ul
+          className="absolute bottom-2 left-0 right-0 z-10 flex flex-wrap gap-1.5 sm:bottom-3 sm:gap-2"
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.5 }}
+        >
+          {tokens.map((token, i) => (
+            <motion.li
+              key={token.id}
+              className="rounded-md border border-line/80 bg-paper/95 px-2 py-1.5 shadow-sm backdrop-blur-sm"
+              initial={reduce ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.62 + i * 0.06, duration: 0.35 }}
+            >
+              <p className="font-mono text-[9px] tracking-wide text-ink-muted">{token.label}</p>
+              <p className="font-mono text-[10px] font-medium text-ink">{token.value}</p>
+            </motion.li>
+          ))}
+        </motion.ul>
+
+        {/* Accent rule */}
+        <motion.div
+          className="absolute left-0 top-0 h-px w-24 bg-ink/45 sm:w-32"
           initial={reduce ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.4, duration: 0.65 }}

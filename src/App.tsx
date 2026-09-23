@@ -7,6 +7,7 @@ import { WorkIndexPage } from './pages/WorkIndexPage'
 import { WorkPage } from './pages/WorkPage'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -23,13 +24,16 @@ function AppRoutes() {
     <>
       <ScrollToTop />
       <SiteHeader />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/work" element={<WorkIndexPage />} />
-        <Route path="/work/:slug" element={<WorkPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      <div id="main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/work" element={<WorkIndexPage />} />
+          <Route path="/work/:slug" element={<WorkPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
       <SiteFooter />
     </>
   )
