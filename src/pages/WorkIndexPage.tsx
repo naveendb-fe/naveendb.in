@@ -26,20 +26,26 @@ export function WorkIndexPage() {
             />
 
             <div className="mt-14">
-              <p className="eyebrow">Primary</p>
-              <div className="mt-6">
-                <WorkList items={primary} />
+              <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+                <p className="eyebrow">Primary</p>
+                <p className="font-mono text-[11px] tracking-wide text-ink-muted">
+                  {primary.length} deep case {primary.length === 1 ? 'study' : 'studies'}
+                </p>
               </div>
+              <WorkList items={primary} variant="primary" />
             </div>
 
             <div className="mt-20">
-              <p className="eyebrow">Archive</p>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
+              <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
+                <p className="eyebrow">Archive</p>
+                <p className="font-mono text-[11px] tracking-wide text-ink-muted">
+                  {archive.length} shorter notes
+                </p>
+              </div>
+              <p className="mb-6 max-w-xl text-sm leading-relaxed text-ink-muted">
                 Earlier Accenture AI, Kogentix, and Flutura product surfaces — shorter notes, not full visual case studies.
               </p>
-              <div className="mt-6">
-                <WorkList items={archive} startIndex={primary.length + 1} />
-              </div>
+              <WorkList items={archive} startIndex={primary.length + 1} variant="archive" />
             </div>
           </div>
         </main>

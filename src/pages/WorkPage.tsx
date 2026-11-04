@@ -69,34 +69,70 @@ export function WorkPage() {
               </ul>
             </motion.header>
 
-            <div className="mt-2">
+            <div className="mt-8 space-y-4">
               {sections.map(([label, body], index) => (
-                <section key={label} className="border-b border-white/[0.08] py-10">
-                  <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">
-                    {String(index + 1).padStart(2, '0')} · {label}
-                  </p>
-                  <p className="mt-4 max-w-[38rem] text-[1.05rem] leading-[1.75] text-ink-muted">
-                    {body}
-                  </p>
-                </section>
+                <motion.section
+                  key={label}
+                  className="rounded-2xl border border-white/[0.1] bg-elevated/45 px-5 py-7 sm:px-7 sm:py-8"
+                  initial={reduce ? false : { opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-8% 0px' }}
+                  transition={{ delay: index * 0.04, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <span
+                      className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-ink font-mono text-[11px] font-medium text-paper tabular-nums"
+                      aria-hidden="true"
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div className="min-w-0">
+                      <h2 className="text-xl font-semibold tracking-[-0.025em] text-ink sm:text-2xl">
+                        {label}
+                      </h2>
+                      <p className="mt-3 max-w-[38rem] text-[1.05rem] leading-[1.75] text-ink/80">
+                        {body}
+                      </p>
+                    </div>
+                  </div>
+                </motion.section>
               ))}
 
               {study.decisions?.length ? (
-                <section className="border-b border-white/[0.08] py-10">
-                  <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">
-                    Decisions
-                  </p>
-                  <ul className="mt-4 max-w-[38rem] space-y-4">
-                    {study.decisions.map((item) => (
-                      <li
-                        key={item}
-                        className="border-l border-accent/30 pl-4 text-[1.05rem] leading-[1.75] text-ink-muted"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
+                <motion.section
+                  className="rounded-2xl border border-white/[0.1] bg-elevated/45 px-5 py-7 sm:px-7 sm:py-8"
+                  initial={reduce ? false : { opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-8% 0px' }}
+                  transition={{ delay: 0.12, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <span
+                      className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-accent/40 bg-accent-soft font-mono text-[11px] font-medium text-accent tabular-nums"
+                      aria-hidden="true"
+                    >
+                      {String(sections.length + 1).padStart(2, '0')}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-xl font-semibold tracking-[-0.025em] text-ink sm:text-2xl">
+                        Decisions
+                      </h2>
+                      <ul className="mt-5 space-y-3">
+                        {study.decisions.map((item, i) => (
+                          <li
+                            key={item}
+                            className="flex gap-3 rounded-xl border border-white/[0.08] bg-surface/50 px-4 py-3.5"
+                          >
+                            <span className="mt-0.5 font-mono text-[11px] text-accent tabular-nums">
+                              {String(i + 1).padStart(2, '0')}
+                            </span>
+                            <p className="text-[1.02rem] leading-[1.7] text-ink/80">{item}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.section>
               ) : null}
             </div>
 

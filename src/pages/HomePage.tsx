@@ -26,7 +26,7 @@ export function HomePage() {
                 description="Two primary case studies — the design system I work on now, and a reporting product from earlier enterprise work."
               />
               <div className="mt-8">
-                <WorkList items={featured} showViewAll />
+                <WorkList items={featured} showViewAll variant="primary" />
               </div>
             </div>
           </section>

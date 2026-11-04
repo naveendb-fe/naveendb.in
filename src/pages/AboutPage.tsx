@@ -22,33 +22,56 @@ export function AboutPage() {
 
             <div className="mt-14">
               <p className="eyebrow">Experience</p>
-              <ol className="mt-6 overflow-hidden rounded-2xl border border-white/[0.1] bg-elevated/50">
+              <ol className="mt-6 space-y-4">
                 {experience.map((job, index) => (
                   <li
                     key={`${job.company}-${job.period}`}
-                    className="grid gap-3 border-b border-white/[0.08] px-5 py-8 last:border-b-0 sm:grid-cols-[6rem_1fr] sm:gap-10 sm:px-6"
+                    className={[
+                      'rounded-2xl border border-white/[0.1] px-5 py-7 sm:px-7 sm:py-8',
+                      index === 0 ? 'bg-elevated/65' : 'bg-elevated/45',
+                    ].join(' ')}
                   >
-                    <span className="font-mono text-xs text-ink-muted tabular-nums">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <div>
-                      <p className="font-mono text-[11px] tracking-wide text-ink-muted">
-                        {job.period}
-                      </p>
-                      <p className="mt-2 text-xl font-semibold tracking-tight text-ink">
-                        {job.role}
-                      </p>
-                      <p className="mt-1 text-ink-muted">{job.company}</p>
-                      <p className="mt-3 max-w-2xl leading-relaxed text-ink-muted">{job.summary}</p>
+                    <div className="flex items-start gap-4 sm:gap-5">
+                      <span
+                        className={[
+                          'mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md font-mono text-[11px] font-medium tabular-nums',
+                          index === 0
+                            ? 'bg-ink text-paper'
+                            : 'border border-white/[0.12] bg-surface/80 text-ink-muted',
+                        ].join(' ')}
+                        aria-hidden="true"
+                      >
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                          {index === 0 ? (
+                            <span className="rounded border border-accent/35 bg-accent-soft px-1.5 py-0.5 font-mono text-[10px] tracking-wide text-accent">
+                              Current
+                            </span>
+                          ) : null}
+                          <p className="font-mono text-[11px] tracking-wide text-ink-muted">
+                            {job.period}
+                          </p>
+                        </div>
+                        <h2 className="mt-2 text-xl font-semibold tracking-[-0.025em] text-ink sm:text-2xl">
+                          {job.role}
+                        </h2>
+                        <p className="mt-1 text-ink/75">{job.company}</p>
+                        <p className="mt-3 max-w-2xl leading-relaxed text-ink/80">{job.summary}</p>
+                      </div>
                     </div>
                   </li>
                 ))}
               </ol>
 
-              <div className="mt-6 rounded-xl border border-white/[0.08] bg-elevated/40 px-5 py-5 sm:px-6">
+              <div className="mt-6 rounded-2xl border border-white/[0.1] bg-elevated/40 px-5 py-6 sm:px-7">
                 <p className="eyebrow">Education</p>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-                  {education.degree} · {education.school} · {education.period}
+                <p className="mt-3 text-base font-medium tracking-tight text-ink">
+                  {education.degree}
+                </p>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-ink-muted">
+                  {education.school} · {education.period}
                 </p>
               </div>
             </div>
