@@ -27,7 +27,7 @@ export function WorkPage() {
     <>
       <Seo title={study.title} description={study.metaDescription} path={`/work/${study.slug}`} />
       <PageEnter>
-        <main className="pb-24 pt-14 sm:pt-20">
+        <main className="page-shell pb-24 pt-14 sm:pt-20">
           <article className="mx-auto max-w-3xl px-5 sm:px-8">
             <Link
               to="/work"
@@ -37,7 +37,7 @@ export function WorkPage() {
             </Link>
 
             <motion.header
-              className="mt-10 border-b border-white/[0.08] pb-10"
+              className="mt-10 rounded-2xl border border-white/[0.1] bg-elevated/60 px-5 py-8 sm:px-8 sm:py-10"
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
@@ -61,7 +61,7 @@ export function WorkPage() {
                 {study.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="rounded border border-white/[0.08] bg-surface/50 px-3 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
+                    className="rounded border border-white/[0.1] bg-surface/80 px-3 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
                   >
                     {tech}
                   </li>
@@ -69,15 +69,9 @@ export function WorkPage() {
               </ul>
             </motion.header>
 
-            {study.images?.length ? (
-              <div className="max-w-none">
-                <CaseStudyGallery images={study.images} />
-              </div>
-            ) : null}
-
-            <div>
+            <div className="mt-2">
               {sections.map(([label, body], index) => (
-                <section key={label} className="border-b border-white/[0.07] py-10">
+                <section key={label} className="border-b border-white/[0.08] py-10">
                   <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">
                     {String(index + 1).padStart(2, '0')} · {label}
                   </p>
@@ -88,7 +82,7 @@ export function WorkPage() {
               ))}
 
               {study.decisions?.length ? (
-                <section className="border-b border-white/[0.07] py-10">
+                <section className="border-b border-white/[0.08] py-10">
                   <p className="font-mono text-[11px] tracking-[0.18em] text-ink-muted uppercase">
                     Decisions
                   </p>
@@ -106,8 +100,10 @@ export function WorkPage() {
               ) : null}
             </div>
 
+            {study.images?.length ? <CaseStudyGallery images={study.images} /> : null}
+
             <nav
-              className="mt-14 grid gap-6 border-t border-white/[0.08] pt-10 sm:grid-cols-2"
+              className="mt-10 grid gap-6 border-t border-white/[0.1] pt-10 sm:grid-cols-2"
               aria-label="Adjacent case studies"
             >
               {prev ? (

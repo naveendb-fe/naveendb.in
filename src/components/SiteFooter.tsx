@@ -9,7 +9,7 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/[0.06]">
+    <footer className="border-t border-white/[0.1] bg-elevated/80">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -22,7 +22,12 @@ export function SiteFooter() {
                 {link.label}
               </Link>
             ))}
-            <a href={site.cvPath} download className="transition hover:text-accent">
+            <a
+              href={site.cvPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-accent"
+            >
               CV
             </a>
             <a

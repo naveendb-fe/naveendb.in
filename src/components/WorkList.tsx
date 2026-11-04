@@ -13,7 +13,7 @@ export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkLis
 
   return (
     <div>
-      <ul className="overflow-hidden rounded-xl border border-white/[0.07] bg-surface/40 backdrop-blur-sm">
+      <ul className="overflow-hidden rounded-2xl border border-white/[0.1] bg-elevated/55 backdrop-blur-sm">
         {items.map((item, index) => {
           const num = String(startIndex + index).padStart(2, '0')
           const isLast = index === items.length - 1
@@ -24,7 +24,7 @@ export function WorkList({ items, showViewAll = false, startIndex = 1 }: WorkLis
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-8% 0px' }}
               transition={{ delay: index * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className={isLast ? '' : 'border-b border-white/[0.06]'}
+              className={isLast ? '' : 'border-b border-white/[0.08]'}
             >
               <Link
                 to={`/work/${item.slug}`}

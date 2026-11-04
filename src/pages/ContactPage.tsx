@@ -12,7 +12,7 @@ export function ContactPage() {
         path="/contact"
       />
       <PageEnter>
-        <main className="pb-24 pt-14 sm:pt-20">
+        <main className="page-shell pb-24 pt-14 sm:pt-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               as="h1"
@@ -21,7 +21,7 @@ export function ContactPage() {
               description="Open to conversations with peers and hiring managers about frontend craft, React systems, and product UI."
             />
 
-            <div className="glass mt-14 max-w-2xl overflow-hidden rounded-2xl">
+            <div className="glass mt-14 max-w-2xl overflow-hidden rounded-2xl border-white/[0.12] bg-elevated/70">
               <a
                 href={`mailto:${site.email}`}
                 className="group block border-b border-white/[0.07] px-6 py-8 transition hover:bg-accent/[0.04] sm:px-8"
@@ -65,8 +65,13 @@ export function ContactPage() {
                 </div>
               </div>
               <div className="px-6 py-6 sm:px-8">
-                <a href={site.cvPath} download className="btn-primary">
-                  Download CV
+                <a
+                  href={site.cvPath}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
+                  View CV
                 </a>
               </div>
             </div>

@@ -16,7 +16,7 @@ export function WorkIndexPage() {
         path="/work"
       />
       <PageEnter>
-        <main className="pb-24 pt-14 sm:pt-20">
+        <main className="page-shell pb-24 pt-14 sm:pt-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <SectionHeading
               as="h1"

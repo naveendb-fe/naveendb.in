@@ -17,7 +17,7 @@ export function Hero() {
   const my = useMotionValue(0.5)
   const sx = useSpring(mx, { stiffness: 70, damping: 22 })
   const sy = useSpring(my, { stiffness: 70, damping: 22 })
-  const spotlight = useMotionTemplate`radial-gradient(560px circle at ${sx}% ${sy}%, rgba(158,197,200,0.09), transparent 55%)`
+  const spotlight = useMotionTemplate`radial-gradient(640px circle at ${sx}% ${sy}%, rgba(158,197,200,0.11), transparent 58%)`
 
   function onMove(e: MouseEvent<HTMLElement>) {
     if (reduce || !ref.current) return
@@ -29,15 +29,26 @@ export function Hero() {
   const brandWords = hero.brand.split(' ')
 
   return (
-    <section ref={ref} className="relative overflow-hidden grain" onMouseMove={onMove}>
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-70" aria-hidden="true" />
+    <section
+      ref={ref}
+      className="relative overflow-hidden grain hero-atmosphere"
+      onMouseMove={onMove}
+    >
+      <div className="pointer-events-none absolute inset-0 grid-bg opacity-80" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 hero-sheen" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 hero-vignette" aria-hidden="true" />
       {!reduce ? (
         <motion.div
-          className="pointer-events-none absolute inset-0 opacity-90"
+          className="pointer-events-none absolute inset-0 opacity-95"
           aria-hidden="true"
           style={{ background: spotlight }}
         />
       ) : null}
+      {/* Soft horizon — quiet depth cue */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-[42%] h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
+        aria-hidden="true"
+      />
 
       <div className="relative z-[1] mx-auto grid min-h-[calc(100svh-3.75rem)] max-w-6xl items-center gap-12 px-5 pb-24 pt-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-28 lg:pt-10">
         <div>
@@ -91,8 +102,13 @@ export function Hero() {
             <Link to="/work" className="btn-primary">
               View work
             </Link>
-            <a href={site.cvPath} download className="btn-ghost">
-              Download CV
+            <a
+              href={site.cvPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+            >
+              View CV
             </a>
           </motion.div>
 

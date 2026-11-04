@@ -31,7 +31,7 @@ export function SiteHeader() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-paper/75 backdrop-blur-xl">
+    <header className="chrome-bar sticky top-0 z-50 border-b">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:bg-ink focus:px-3 focus:py-2 focus:text-sm focus:text-paper"
@@ -74,13 +74,23 @@ export function SiteHeader() {
               )}
             </NavLink>
           ))}
-          <a href={site.cvPath} download className="btn-primary ml-3 px-3 py-1.5">
+          <a
+            href={site.cvPath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary ml-3 px-3 py-1.5"
+          >
             CV
           </a>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <a href={site.cvPath} download className="btn-primary px-3 py-1.5 text-xs">
+          <a
+            href={site.cvPath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary px-3 py-1.5 text-xs"
+          >
             CV
           </a>
           <button
@@ -103,7 +113,7 @@ export function SiteHeader() {
         {open ? (
           <motion.nav
             id={panelId}
-            className="border-t border-white/[0.06] bg-paper/95 backdrop-blur-xl md:hidden"
+            className="border-t border-white/[0.1] bg-elevated md:hidden"
             aria-label="Mobile"
             initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
