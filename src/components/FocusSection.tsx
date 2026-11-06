@@ -44,7 +44,7 @@ export function FocusSection() {
               </div>
 
               <ul className="space-y-3 border-t border-white/[0.08] pt-6">
-                {['Tokens & foundations', 'React components', 'Patterns & docs'].map((item) => (
+                {['Tokens & foundations', 'React components', 'Patterns & docs', 'AI in the practice'].map((item) => (
                   <li
                     key={item}
                     className="flex items-center gap-3 font-mono text-[12px] tracking-wide text-ink-muted"

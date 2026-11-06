@@ -44,7 +44,7 @@ export const caseStudies: CaseStudy[] = [
     problem:
       'Across multiple Granicus products, UI was drifting: duplicated components, uneven interaction patterns, and accessibility that depended on whoever happened to build the screen. Design and engineering lacked one trusted source of working code and guidance, so every new surface risked reinventing the same primitives.',
     approach:
-      'Help build and evolve GDS as a product in its own right: foundations (color, type, space, elevation), token-driven React components, documented patterns for common flows (forms, filters, progressive disclosure, notifications), and contribution paths through Figma libraries, Storybook, and written guidelines. The bar is accessibility, consistency, and predictable interaction — not a one-off kit.',
+      'Help build and evolve GDS as a product in its own right: foundations (color, type, space, elevation), token-driven React components, documented patterns for common flows (forms, filters, progressive disclosure, notifications), and contribution paths through Figma libraries, Storybook, and written guidelines. Drafts move through MCP and shared skills, then get checked against the system. The bar is accessibility, consistency, and predictable interaction — not a one-off kit.',
     decisions: [
       'Treat the system as shared infrastructure: wrappers and tokens over one-off styles so product teams inherit behavior, not just visuals.',
       'Document patterns as recipes, not only isolated components — the hard part is composing flows teams ship weekly.',

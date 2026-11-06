@@ -110,8 +110,13 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
                 <h3 className="max-w-[14rem] text-[1.15rem] font-semibold leading-tight tracking-[-0.03em] text-ink sm:max-w-[16rem] sm:text-[1.35rem]">
                   One shared system for every product
                 </h3>
-                <span className="mt-0.5 rounded border border-accent/30 bg-accent-soft px-1.5 py-0.5 font-mono text-[9px] tracking-wide text-accent">
-                  contrast AA · pass
+                <span className="mt-0.5 flex flex-wrap gap-1.5">
+                  <span className="rounded border border-accent/30 bg-accent-soft px-1.5 py-0.5 font-mono text-[9px] tracking-wide text-accent">
+                    contrast AA · pass
+                  </span>
+                  <span className="rounded border border-accent/30 bg-accent-soft px-1.5 py-0.5 font-mono text-[9px] tracking-wide text-accent">
+                    AI draft · system check
+                  </span>
                 </span>
               </div>
               <p className="mt-3 max-w-[15rem] text-[11px] leading-relaxed text-ink-muted sm:max-w-[17rem] sm:text-xs">

@@ -18,7 +18,7 @@ export const hero = {
   headline: 'Senior Frontend Engineer',
   supporting:
     'I build design systems and product interfaces that stay coherent under density — shared foundations, accessible components, and clear interaction.',
-  stack: ['React', 'TypeScript', 'Design systems'] as const,
+  stack: ['AI', 'React', 'TypeScript', 'Design systems'] as const,
 } as const
 
 /** Short focus line used instead of a slogan-heavy Craft grid */
@@ -35,7 +35,7 @@ export const experience = [
     role: 'Senior Frontend Engineer',
     period: 'Sep 2022 — Present',
     summary:
-      'Own and evolve the Granicus Design System with design partners — foundations, React components, patterns, Storybook, and contribution paths used across product surfaces.',
+      'Own and evolve the Granicus Design System with design partners — foundations, React components, patterns, Storybook, and contribution paths used across product surfaces. AI sits in that practice: MCP, shared skills, and the model that fits the job.',
   },
   {
     company: 'Accenture AI',
@@ -72,7 +72,7 @@ export const education = {
 export const about = {
   lead: 'I care about interfaces that stay coherent when products multiply.',
   body: 'I’m Naveen DB, a senior frontend engineer in Bangalore. Since September 2022 I’ve been at Granicus Inc. working on the Granicus Design System — shared React code, Figma libraries, and guidelines so teams ship consistent, accessible UI without reinventing the basics. Before that I spent years on enterprise analytics and IoT product surfaces at Accenture AI, Kogentix, and Flutura. Sketching pulled me into UI early; the work that stuck is systems thinking with product judgment.',
-  now: 'Right now I’m deepest in design-system foundations, component APIs, accessibility, and the glue between design and engineering.',
+  now: 'Right now I’m deepest in design-system foundations, component APIs, accessibility, and the glue between design and engineering. Day to day I also work with AI in the org — MCP, shared skills, and a mix of models (Claude, GPT, Gemini, Grok) — so that work moves faster without lowering the bar.',
 } as const
 
 export const interests = ['Travelling', 'Music', 'Riding'] as const

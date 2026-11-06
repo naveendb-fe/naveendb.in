@@ -279,7 +279,7 @@ def main():
     skills_two_col(
         pdf,
         width,
-        ["React", "Next.js", "Vue", "Angular", "TypeScript", "Redux"],
+        ["AI (Agents, skills)", "React", "Next.js", "Vue", "Angular", "TypeScript", "Redux"],
         [
             "CSS / SCSS",
             "Design systems",
@@ -302,6 +302,7 @@ def main():
         "Bangalore",
         [
             "Own and evolve the Granicus Design System: tokens, foundations, React components, patterns, and contribution guidelines.",
+            "Use AI in the practice: MCP, shared skills, and the model that fits the job, then check the result against the system.",
             "Align design and engineering through Figma libraries and Storybook so libraries and code stay in sync.",
             "Raise the bar on accessibility, consistency, and predictable interaction across multi-product adoption.",
             "Document patterns as recipes for common flows - forms, filters, progressive disclosure, notifications.",
