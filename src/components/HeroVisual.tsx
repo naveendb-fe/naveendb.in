@@ -85,13 +85,13 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
       >
         {/* Abstract system preview — CSS only, no product screenshot */}
         <motion.div
-          className="absolute inset-x-0 top-6 bottom-14 overflow-hidden rounded-2xl border border-white/[0.08] bg-surface shadow-[0_28px_80px_-36px_rgba(0,0,0,0.85),0_0_0_1px_rgba(158,197,200,0.06)] sm:inset-x-1 sm:top-8 sm:bottom-16"
+          className="absolute inset-x-0 top-6 bottom-14 overflow-hidden rounded-2xl border border-rule bg-surface shadow-[var(--shadow-card)] sm:inset-x-1 sm:top-8 sm:bottom-16"
           initial={reduce ? false : { y: 36, opacity: 0, scale: 0.96 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
           transition={{ delay: 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={reduce ? undefined : { x: frameX, y: frameY }}
         >
-          <div className="flex items-center justify-between border-b border-white/[0.06] bg-paper/40 px-4 py-2.5">
+          <div className="flex items-center justify-between border-b border-rule bg-paper/40 px-4 py-2.5">
             <div className="flex gap-1.5">
               <span className="h-2 w-2 rounded-full bg-line" />
               <span className="h-2 w-2 rounded-full bg-line" />
@@ -103,7 +103,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
           </div>
 
           <div className="relative h-[calc(100%-2.25rem)] overflow-hidden bg-gradient-to-b from-paper/80 via-surface to-paper px-4 py-5 sm:px-5 sm:py-6">
-            <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:24px_24px]" />
+            <div className="grid-fine pointer-events-none absolute inset-0 opacity-70" />
 
             <div className="relative">
               <div className="flex flex-wrap items-start gap-2">
@@ -124,7 +124,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
                 consistent and accessible.
               </p>
 
-              <div className="mt-5 flex items-center justify-between gap-3 rounded-md border border-white/[0.07] bg-paper/50 px-3 py-2.5">
+              <div className="mt-5 flex items-center justify-between gap-3 rounded-md border border-rule bg-paper/50 px-3 py-2.5">
                 <p className="text-[11px] font-medium text-ink sm:text-xs">
                   Accessibility checklist before shipping
                 </p>
@@ -139,7 +139,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
                   {['Design', 'Develop', 'Migrate'].map((label) => (
                     <div
                       key={label}
-                      className="rounded-md border border-white/[0.06] bg-paper/40 px-2 py-3 text-center"
+                      className="rounded-md border border-rule bg-paper/40 px-2 py-3 text-center"
                     >
                       <div className="mx-auto h-6 w-6 rounded border border-line/80 bg-surface/80" />
                       <p className="mt-2 font-mono text-[9px] tracking-wide text-ink-muted">
@@ -161,7 +161,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
             ) : null}
 
             <motion.div
-              className="absolute left-3 top-[42%] hidden max-w-[9.5rem] rounded-md border border-white/[0.1] bg-surface/95 px-2.5 py-2 shadow-[0_12px_32px_-16px_rgba(0,0,0,0.8)] backdrop-blur-sm sm:left-4 sm:block"
+              className="absolute left-3 top-[42%] hidden max-w-[9.5rem] rounded-md border border-rule-strong bg-surface/95 px-2.5 py-2 shadow-[var(--shadow-chip)] backdrop-blur-sm sm:left-4 sm:block"
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.45 }}
@@ -214,7 +214,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
                   'inline-flex min-w-[7.5rem] items-center justify-center rounded px-4 py-2 text-sm font-medium tracking-tight',
                   activeState === 'Default' ? 'bg-ink text-paper' : '',
                   activeState === 'Hover'
-                    ? 'bg-ink/90 text-paper shadow-[0_10px_28px_-12px_rgba(158,197,200,0.55)]'
+                    ? 'bg-ink/90 text-paper shadow-[var(--shadow-accent)]'
                     : '',
                   activeState === 'Focus'
                     ? 'bg-ink text-paper outline outline-2 outline-offset-2 outline-accent/60'
@@ -257,7 +257,7 @@ export function HeroVisual({ pointerX, pointerY, reduceMotion }: HeroVisualProps
           {tokens.map((token, i) => (
             <motion.li
               key={token.id}
-              className="rounded-md border border-white/[0.08] bg-surface/90 px-2 py-1.5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.7)] backdrop-blur-sm"
+              className="rounded-md border border-rule bg-surface/90 px-2 py-1.5 shadow-[var(--shadow-token)] backdrop-blur-sm"
               initial={reduce ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.62 + i * 0.06, duration: 0.35 }}

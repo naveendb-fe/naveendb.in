@@ -14,7 +14,7 @@ export function AboutPage() {
       <PageEnter>
         <main className="page-shell pb-24 pt-14 sm:pt-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="rounded-2xl border border-white/[0.1] bg-elevated/55 px-5 py-8 sm:px-8 sm:py-10">
+            <div className="rounded-2xl border border-rule-strong bg-elevated/55 px-5 py-8 sm:px-8 sm:py-10">
               <SectionHeading as="h1" eyebrow="About" title={about.lead} />
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">{about.body}</p>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink">{about.now}</p>
@@ -27,7 +27,7 @@ export function AboutPage() {
                   <li
                     key={`${job.company}-${job.period}`}
                     className={[
-                      'rounded-2xl border border-white/[0.1] px-5 py-7 sm:px-7 sm:py-8',
+                      'rounded-2xl border border-rule-strong px-5 py-7 sm:px-7 sm:py-8',
                       index === 0 ? 'bg-elevated/65' : 'bg-elevated/45',
                     ].join(' ')}
                   >
@@ -37,7 +37,7 @@ export function AboutPage() {
                           'mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md font-mono text-[11px] font-medium tabular-nums',
                           index === 0
                             ? 'bg-ink text-paper'
-                            : 'border border-white/[0.12] bg-surface/80 text-ink-muted',
+                            : 'border border-rule-strong bg-surface/80 text-ink-muted',
                         ].join(' ')}
                         aria-hidden="true"
                       >
@@ -65,7 +65,7 @@ export function AboutPage() {
                 ))}
               </ol>
 
-              <div className="mt-6 rounded-2xl border border-white/[0.1] bg-elevated/40 px-5 py-6 sm:px-7">
+              <div className="mt-6 rounded-2xl border border-rule-strong bg-elevated/40 px-5 py-6 sm:px-7">
                 <p className="eyebrow">Education</p>
                 <p className="mt-3 text-base font-medium tracking-tight text-ink">
                   {education.degree}
@@ -98,9 +98,9 @@ export function AboutPage() {
 
             <div className="mt-20">
               <p className="eyebrow">Writing</p>
-              <ul className="mt-6 overflow-hidden rounded-2xl border border-white/[0.1] bg-elevated/50">
+              <ul className="mt-6 overflow-hidden rounded-2xl border border-rule-strong bg-elevated/50">
                 {notes.map((note) => (
-                  <li key={note.href} className="border-b border-white/[0.08] last:border-b-0">
+                  <li key={note.href} className="border-b border-rule last:border-b-0">
                     <a
                       href={note.href}
                       target="_blank"

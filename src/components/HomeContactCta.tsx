@@ -7,7 +7,7 @@ export function HomeContactCta() {
 
   return (
     <section className="ink-band relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="grid-fine grid-band pointer-events-none absolute inset-0 opacity-50" />
       <div className="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 14 }}

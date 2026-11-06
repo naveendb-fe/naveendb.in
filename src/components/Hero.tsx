@@ -17,7 +17,7 @@ export function Hero() {
   const my = useMotionValue(0.5)
   const sx = useSpring(mx, { stiffness: 70, damping: 22 })
   const sy = useSpring(my, { stiffness: 70, damping: 22 })
-  const spotlight = useMotionTemplate`radial-gradient(640px circle at ${sx}% ${sy}%, rgba(158,197,200,0.11), transparent 58%)`
+  const spotlight = useMotionTemplate`radial-gradient(640px circle at ${sx}% ${sy}%, var(--hero-spot), transparent 58%)`
 
   function onMove(e: MouseEvent<HTMLElement>) {
     if (reduce || !ref.current) return
@@ -46,7 +46,7 @@ export function Hero() {
       ) : null}
       {/* Soft horizon — quiet depth cue */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-[42%] h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-[42%] h-px bg-gradient-to-r from-transparent via-rule to-transparent"
         aria-hidden="true"
       />
 
@@ -121,7 +121,7 @@ export function Hero() {
             {hero.stack.map((item) => (
               <li
                 key={item}
-                className="rounded border border-white/[0.08] bg-surface/50 px-2.5 py-1 font-mono text-[11px] tracking-wide text-ink-muted backdrop-blur-sm"
+                className="rounded border border-rule bg-surface/50 px-2.5 py-1 font-mono text-[11px] tracking-wide text-ink-muted backdrop-blur-sm"
               >
                 {item}
               </li>

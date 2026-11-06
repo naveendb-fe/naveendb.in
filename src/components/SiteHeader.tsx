@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { site } from '../content/site'
+import { ThemeToggle } from './ThemeToggle'
 
 const links = [
   { label: 'Work', to: '/work' },
@@ -74,17 +75,19 @@ export function SiteHeader() {
               )}
             </NavLink>
           ))}
+          <ThemeToggle className="ml-2" />
           <a
             href={site.cvPath}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary ml-3 px-3 py-1.5"
+            className="btn-primary ml-2 px-3 py-1.5"
           >
             CV
           </a>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <a
             href={site.cvPath}
             target="_blank"
@@ -95,7 +98,7 @@ export function SiteHeader() {
           </a>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded border border-white/[0.1] bg-surface/60 text-ink"
+            className="inline-flex h-9 w-9 items-center justify-center rounded border border-rule-strong bg-surface/60 text-ink"
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -113,7 +116,7 @@ export function SiteHeader() {
         {open ? (
           <motion.nav
             id={panelId}
-            className="border-t border-white/[0.1] bg-elevated md:hidden"
+            className="border-t border-rule-strong bg-elevated md:hidden"
             aria-label="Mobile"
             initial={reduce ? false : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -128,7 +131,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       [
-                        'block border-b border-white/[0.06] py-4 text-base',
+                        'block border-b border-rule py-4 text-base',
                         isActive ? 'text-ink' : 'text-ink-muted',
                       ].join(' ')
                     }

@@ -33,7 +33,7 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
   const countLabel = images.length === 1 ? '1 screen' : `${images.length} screens`
 
   return (
-    <section className="border-b border-white/[0.08] py-10">
+    <section className="border-b border-rule py-10">
       <button
         type="button"
         className="group glass flex w-full cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-5 text-left transition hover:border-accent/30 hover:bg-elevated/80 sm:px-6"
@@ -66,10 +66,10 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
           onClick={() => setActive(null)}
         >
           <div
-            className="relative max-h-full w-full max-w-5xl overflow-auto rounded-xl border border-white/[0.12] bg-elevated shadow-[var(--shadow-elevated)]"
+            className="relative max-h-full w-full max-w-5xl overflow-auto rounded-xl border border-rule-strong bg-elevated shadow-[var(--shadow-elevated)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-4 border-b border-white/[0.1] px-4 py-3">
+            <div className="flex items-center justify-between gap-4 border-b border-rule-strong px-4 py-3">
               <p id={titleId} className="min-w-0 truncate font-mono text-[11px] text-ink-muted">
                 {lightbox.caption}
               </p>
@@ -87,7 +87,7 @@ export function CaseStudyGallery({ images }: { images: CaseStudyImage[] }) {
               className="block h-auto max-h-[80vh] w-full object-contain bg-paper"
             />
             {images.length > 1 ? (
-              <div className="flex justify-between border-t border-white/[0.1] px-4 py-3 font-mono text-sm text-ink-muted">
+              <div className="flex justify-between border-t border-rule-strong px-4 py-3 font-mono text-sm text-ink-muted">
                 <button
                   type="button"
                   className="cursor-pointer hover:text-accent"

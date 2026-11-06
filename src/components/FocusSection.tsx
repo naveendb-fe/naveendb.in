@@ -10,14 +10,14 @@ export function FocusSection() {
     <section className="panel-band relative py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
-          className="overflow-hidden rounded-2xl border border-white/[0.1] bg-elevated/60"
+          className="overflow-hidden rounded-2xl border border-rule-strong bg-elevated/60"
           initial={reduce ? false : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-10% 0px' }}
           transition={{ duration: 0.5 }}
         >
           <div className="grid lg:grid-cols-[1.35fr_0.85fr]">
-            <div className="border-b border-white/[0.08] px-6 py-9 sm:px-8 sm:py-11 lg:border-b-0 lg:border-r lg:border-white/[0.08]">
+            <div className="border-b border-rule px-6 py-9 sm:px-8 sm:py-11 lg:border-b-0 lg:border-r lg:border-rule">
               <p className="eyebrow">{focus.eyebrow}</p>
               <h2 className="display mt-4 max-w-xl text-3xl text-ink sm:text-4xl lg:text-[2.75rem]">
                 {focus.title}
@@ -43,7 +43,7 @@ export function FocusSection() {
                 </p>
               </div>
 
-              <ul className="space-y-3 border-t border-white/[0.08] pt-6">
+              <ul className="space-y-3 border-t border-rule pt-6">
                 {['Tokens & foundations', 'React components', 'Patterns & docs', 'AI in the practice'].map((item) => (
                   <li
                     key={item}

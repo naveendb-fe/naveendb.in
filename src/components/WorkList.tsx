@@ -23,7 +23,7 @@ export function WorkList({
     <div>
       <ul
         className={[
-          'overflow-hidden rounded-2xl border border-white/[0.1] backdrop-blur-sm',
+          'overflow-hidden rounded-2xl border border-rule-strong backdrop-blur-sm',
           isArchive ? 'bg-elevated/40' : 'bg-elevated/55',
         ].join(' ')}
       >
@@ -40,7 +40,7 @@ export function WorkList({
               viewport={{ once: true, margin: '-8% 0px' }}
               transition={{ delay: index * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className={[
-                isLast ? '' : 'border-b border-white/[0.08]',
+                isLast ? '' : 'border-b border-rule',
                 isLead ? 'bg-surface/35' : '',
               ].join(' ')}
             >
@@ -103,7 +103,7 @@ export function WorkList({
                     {item.stack.slice(0, isArchive ? 3 : 4).map((tech) => (
                       <li
                         key={tech}
-                        className="rounded border border-white/[0.08] px-2 py-0.5 font-mono text-[10px] tracking-wide text-ink-muted transition group-hover:border-accent/30 group-hover:text-accent"
+                        className="rounded border border-rule px-2 py-0.5 font-mono text-[10px] tracking-wide text-ink-muted transition group-hover:border-accent/30 group-hover:text-accent"
                       >
                         {tech}
                       </li>

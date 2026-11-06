@@ -37,7 +37,7 @@ export function WorkPage() {
             </Link>
 
             <motion.header
-              className="mt-10 rounded-2xl border border-white/[0.1] bg-elevated/60 px-5 py-8 sm:px-8 sm:py-10"
+              className="mt-10 rounded-2xl border border-rule-strong bg-elevated/60 px-5 py-8 sm:px-8 sm:py-10"
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
@@ -61,7 +61,7 @@ export function WorkPage() {
                 {study.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="rounded border border-white/[0.1] bg-surface/80 px-3 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
+                    className="rounded border border-rule-strong bg-surface/80 px-3 py-1 font-mono text-[11px] tracking-wide text-ink-muted"
                   >
                     {tech}
                   </li>
@@ -73,7 +73,7 @@ export function WorkPage() {
               {sections.map(([label, body], index) => (
                 <motion.section
                   key={label}
-                  className="rounded-2xl border border-white/[0.1] bg-elevated/45 px-5 py-7 sm:px-7 sm:py-8"
+                  className="rounded-2xl border border-rule-strong bg-elevated/45 px-5 py-7 sm:px-7 sm:py-8"
                   initial={reduce ? false : { opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-8% 0px' }}
@@ -100,7 +100,7 @@ export function WorkPage() {
 
               {study.decisions?.length ? (
                 <motion.section
-                  className="rounded-2xl border border-white/[0.1] bg-elevated/45 px-5 py-7 sm:px-7 sm:py-8"
+                  className="rounded-2xl border border-rule-strong bg-elevated/45 px-5 py-7 sm:px-7 sm:py-8"
                   initial={reduce ? false : { opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-8% 0px' }}
@@ -121,7 +121,7 @@ export function WorkPage() {
                         {study.decisions.map((item, i) => (
                           <li
                             key={item}
-                            className="flex gap-3 rounded-xl border border-white/[0.08] bg-surface/50 px-4 py-3.5"
+                            className="flex gap-3 rounded-xl border border-rule bg-surface/50 px-4 py-3.5"
                           >
                             <span className="mt-0.5 font-mono text-[11px] text-accent tabular-nums">
                               {String(i + 1).padStart(2, '0')}
@@ -139,7 +139,7 @@ export function WorkPage() {
             {study.images?.length ? <CaseStudyGallery images={study.images} /> : null}
 
             <nav
-              className="mt-10 grid gap-6 border-t border-white/[0.1] pt-10 sm:grid-cols-2"
+              className="mt-10 grid gap-6 border-t border-rule-strong pt-10 sm:grid-cols-2"
               aria-label="Adjacent case studies"
             >
               {prev ? (
