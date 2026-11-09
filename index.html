@@ -1,17 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta name="theme-color" content="#070809" />
+    <meta name="theme-color" content="#f3f0ea" />
     <script>
       (function () {
         try {
           var stored = localStorage.getItem('theme')
-          var theme =
-            stored === 'light' || stored === 'dark'
-              ? stored
-              : window.matchMedia('(prefers-color-scheme: light)').matches
-                ? 'light'
-                : 'dark'
+          var theme = stored === 'light' || stored === 'dark' ? stored : 'light'
           document.documentElement.dataset.theme = theme
           document.documentElement.style.colorScheme = theme
           var meta = document.querySelector('meta[name="theme-color"]')

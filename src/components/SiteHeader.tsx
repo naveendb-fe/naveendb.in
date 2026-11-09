@@ -75,7 +75,6 @@ export function SiteHeader() {
               )}
             </NavLink>
           ))}
-          <ThemeToggle className="ml-2" />
           <a
             href={site.cvPath}
             target="_blank"
@@ -84,10 +83,10 @@ export function SiteHeader() {
           >
             CV
           </a>
+          <ThemeToggle className="ml-2" />
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
           <a
             href={site.cvPath}
             target="_blank"
@@ -109,6 +108,7 @@ export function SiteHeader() {
               {open ? '×' : '☰'}
             </span>
           </button>
+          <ThemeToggle />
         </div>
       </div>
 

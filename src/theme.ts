@@ -13,7 +13,7 @@ export function isTheme(value: string | null): value is Theme {
 
 export function readTheme(): Theme {
   const current = document.documentElement.dataset.theme ?? null
-  return isTheme(current) ? current : 'dark'
+  return isTheme(current) ? current : 'light'
 }
 
 export function applyTheme(theme: Theme) {
